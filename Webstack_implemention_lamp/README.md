@@ -2,7 +2,7 @@
 
 For this project-based learning task,  I deployed a LAMP stack on an AWS EC2 instance. The LAMP stack consists of Linux, Apache, MySQL, and PHP. I used an Ubuntu 22 server for Linux, Apache for the web server, MySQL for the database, and PHP for the server-side scripting language. I also configured the Apache web server with virtual hosts.
 
-Skills: `scripting`, `cloud computing`
+Skills: `scripting`, `Foundations of DevOps`
 
 ## Learning Outcomes
 
@@ -17,7 +17,7 @@ Skills: `scripting`, `cloud computing`
 
 ### Software Development Life Cycle(SDLC) Side Self-study
 
-I did a self-study on the Software Development Life Cycle(SDLC) to understand the different phases of the SDLC and how DevOps practices can be integrated into the SDLC. I took a few notes on the SDLC and DevOps practices. link to notes [here](https://www.notion.so/Software-Development-Life-Cycle-SDLC-DevOps-Practices-Notes-1b3b3b3b3b3b4)
+I did a self-study on the Software Development Life Cycle(SDLC) to understand the different phases of the SDLC and how DevOps practices can be integrated into the SDLC. I took a few notes on the SDLC and DevOps practices. [link to notes](https://docs.google.com/document/d/1DenkrVLdUXVcRnKIlTI6yVVglpX3bBFlwXb-BC_X62Q/edit) 
 
 ### 101 Environment Setup
 
@@ -189,7 +189,7 @@ The projectlamp virtual host works as expected. now let's go ahead and test the 
 
 ### 106 Enable PHP on the new website
 
-currently, if we add an index.php file to the `/var/www/projectlamp` directory, the index.html file will be served because the  DirectoryIndex directive inside the `/etc/apache2/mods-enabled/dir.conf` file is set to serve index.html files first before index.php files. so the index.html file we just creaated will be served instead of the index.php file we are about to create.
+currently, if we add an index.php file to the `/var/www/projectlamp` directory, the index.html file will be served because the  `DirectoryIndex directive` inside the `/etc/apache2/mods-enabled/dir.conf` file is set to serve `index.html` files first before index.php files. so the index.html file we just creaated will be served instead of the `index.php` file we are about to create.
 
 let's see what the `dir.conf` file looks like:
 
