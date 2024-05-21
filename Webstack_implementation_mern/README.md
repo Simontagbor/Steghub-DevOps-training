@@ -579,3 +579,264 @@ We can also retrieve all todo items using the client side URI http://16.171.255.
 <img src="images/postman-clientside.png" style="width:100%;" alt="screenshot showing get request in the browser">
 
 The frontend is working as expected. 
+
+## Bonus Task - Create React Components
+
+I created a few React components to display the TO-DO items. The components will be used to display the TO-DO items on the frontend. I created a new directory called `components` inside the `client/src` directory. Inside the `components` directory, I created a new file called `Todo.js` and defined the `Todo` component. Here is the code for the `Todo.js` file:
+
+```javascript
+// client/src/components/Input.jss
+import React, { Component } from 'react';
+import axios from 'axios';
+
+class Input extends Component {
+    state = {
+        action: '',
+    }
+
+    addToDo = () => {
+        const task = {
+            action: this.state.action
+        }
+
+        if (task.action && task.action.length > 0) {
+            axios.post('/api/todos', task)
+                .then(res => {
+                    if (res.data) {
+                        this.props.getTodos();
+                        this.setState({ action: '' });
+                    }
+                })
+                .catch(err => console.log(err))
+
+        } else {
+            console.log('Input field is empty')
+        }
+}
+
+handleChange = (e) => {
+    this.setState({
+        [e.target.name]: e.target.value
+    })
+}
+
+render() {
+    let { action } = this.state;
+    return (
+        <div>
+            <input type="text" name="action" value={action} onChange={this.handleChange} />
+            <button onClick={this.addToDo}>Add</button>
+        </div>
+    )
+}
+
+export default Input;
+```
+This code defines the `Input` component that will be used to add a new TO-DO item. The `Input` component has an input field and a button. The user can type the TO-DO item in the input field and click the button to add the TO-DO item. The `addToDo` method is called when the user clicks the button. The `handleChange` method is called when the user types in the input field.
+
+notice that we use `axios` to make a POST request to the backend to add a new TO-DO item. We will need to install the `axios` package. [axios] will make it easier to make HTTP requests from the frontend to the backend. To install the `axios` package, run the following command:
+
+```bash
+npm install axios
+```
+
+now let's create a few more components to display the TO-DO items. I created a new file called `ListTodo.js` inside the `/client/src/components` directory. Here is the code for the `ListTodo.js` file:
+
+```javascript
+// client/src/components/ListTodo.js
+
+import React from 'react';
+
+const ListTodo = ({ todos, deleteTodo }) => {
+    return (
+        <div>
+            <ul>
+                {todos && todos.length > 0 ? todos.map(todo => (
+                    <li key={todo._id}>
+                        {todo.action}
+                        <button onClick={() => deleteTodo(todo._id)}>Delete</button>
+                    </li>
+                )) : <li>No TO-DO items</li>}
+            </ul>
+        </div>
+    )
+}
+
+export default ListTodo;
+```
+
+Let's also add a `Todo.js` component to display the TO-DO items. I created a new file called `Todo.js` inside the `/client/src/components` directory. Here is the code for the `Todo.js` file:
+
+```javascript
+// client/src/components/Todo.js
+
+import React, { Component } from 'react';
+import axios from 'axios';
+
+import Input from './Input';
+import ListTodo from './ListTodo';
+
+class Todo extends Component {
+    state = {
+        todos: []
+    }
+
+    componentDidMount() {
+        this.getTodos();
+    }
+
+    getTodos = () => {
+        axios.get('/api/todos')
+            .then(res => {
+                if (res.data) {
+                    this.setState({ todos: res.data })
+                }
+            })
+            .catch(err => console.log(err))
+    }
+
+    deleteTodo = (id) => {
+        axios.delete(`/api/todos/${id}`)
+            .then(res => {
+                if (res.data) {
+                    this.getTodos();
+                }
+            })
+            .catch(err => console.log(err))
+    }
+
+    render() {
+        let { todos } = this.state;
+        return (
+            <div>
+                <h1>TO-DO List</hh1>
+                <Input getTodos={this.getTodos} />
+                <ListTodo todos={todos} deleteTodo={this.deleteTodo} />
+            </div>
+        )
+    }
+}
+
+export default Todo;
+```
+
+Finally, I updated the `App.js` file in the `/client/src` directory to include the `Todo` component.
+I also added some styling to the `App.css` file in the `/client/src` directory to style the TO-DO app.
+
+Here is the code for the `App.js` file:
+
+```javascript
+// client/src/App.js
+
+import React from 'react';
+
+import Todo from './components/Todo';
+import 'App.css';
+
+const App = () => {
+    return (
+        <div className="App">
+            <Todo />
+        </div>
+    )
+}
+
+export default App;
+```
+
+the `App.css` file will contain the following code:
+
+```css	
+/* client/src/App.css */
+
+.App {
+    text-align: center;
+    font-zize: calc(10px + 2vmin);
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input {
+    height: 40px;
+    width: 50%;
+    border: none;
+    border-bottom: 1px solid #000;
+    background-color: none;
+    font-size: 1.5rem;
+    color: #787a80;
+}
+
+input:focus {
+    outline: none;
+}
+
+button {
+    height: 45px;
+    width: 25%;
+    background: #101113;
+    color: #787a80;
+    border: none;
+    cursor: pointer;
+    font-size: 25px;
+    margin-left: 10px;
+}
+
+button:focus {
+    outline: none;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+    padding: 15px;
+    backcground: #171a1f;
+    border-radius: 5px;
+}
+
+li {
+    padding: 10px;
+    margin: 10px;
+    background: #282c34;
+    color: #787a80;
+    border-radius: 5px;
+    overflow-wrap: break-word;
+    cursor: pointer;
+
+}
+
+@media only screen and (max-width: 600px) {
+    .App {
+        width: 90%;
+    }
+
+    .input {
+        width: 80%;
+    }
+
+    button {
+        width: 100%;
+        margin-top: 10px;
+        margin-left: 0;
+    }
+}
+```
+
+### Test New React Components
+
+Finally time for live testing of the TODO app. I ran the frontend server using the following command:
+
+```bash
+npm run dev
+```
+
+I then navigated to http://16.171.255.38:3000/api/todos to test it out.
+
+<img src="images/final-todo-app.png" style="width:100%;" alt="screenshot showing final todo app in the browser">
+
+The TO-DO app is working as expected. The user can add a new TO-DO item, retrieve all TO-DO items, update a TO-DO item, and delete a TO-DO item. We have sucessfully set up a MERN Stack Application development environment on AWS. The backend is working as expected and the frontend is also working as expected.
+
+## Conclusion
+
+In this project, we set up a MERN stack application development environment on AWS. We created a TO-DO app using the MERN stack. We set up the backend using Node.js and Express.js. We defined the routes for the TO-DO app and modeled the TO-DO items. We connected the backend to the MongoDB database using mLab. We tested the API endpoints using Postman. We set up the frontend using React. We created React components to display the TO-DO items. We tested the frontend in the browser. The TO-DO app is working as expected. The user can add a new TO-DO item, retrieve all TO-DO items, update a TO-DO item, and delete a TO-DO item. The MERN stack application development environment is now set up on AWS. The backend is working as expected and the frontend is also working as expected.
