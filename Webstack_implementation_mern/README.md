@@ -184,12 +184,11 @@ node index.js
 ```
 In the terminal output we should see the message "Server running on port 5000". This means that the backend is working as expected.
 
-<img src="images/working-express-page.png" style="width:100%; padding-top:20px; padding-bottom:20px" alt="screenshot of terminal output showing index route test">
+<img src="images/server-port.png" style="width:100%; padding-top:20px; padding-bottom:20px" alt="screenshot of browser showing index route message">
 
 let's try it out in the browser. Open a browser and navigate to `http://<public-ip>:5000`. You should see the message "Welcome to the TO-DO app powered by MERN stack".
 
-<img src="images/server-port.png" style="width:100%; padding-top:20px; padding-bottom:20px" alt="screenshot of browser showing index route message">
-
+<img src="images/working-express-page.png" style="width:100%; padding-top:20px; padding-bottom:20px" alt="screenshot of terminal output showing index route test">
 Great! The backend is working as expected. Before we do the next steps, let's quickly review what we have done so far.
 We are setting up a MERN stack application on AWS. After spinning up an EC2 instance, we installed Node.js and npm. We then set up the directory structure for the TO-DO app and initialized a new Node.js project. We installed the Express.js framework and created an index route to test if the backend is working as expected. The index route returns a message to the client when the client makes a request to the route. We also updated the inbound rules for the EC2 instance to allow traffic on port 5000. The backend is now ready for the next steps.
 
@@ -843,6 +842,9 @@ I then navigated to http://16.171.255.38:3000/api/todos to test it out.
 <img src="images/final-todo-app.png" style="width:100%;" alt="screenshot showing final todo app in the browser">
 
 The TO-DO app is working as expected. The user can add a new TO-DO item, retrieve all TO-DO items, update a TO-DO item, and delete a TO-DO item. We have sucessfully set up a MERN Stack Application development environment on AWS. The backend is working as expected and the frontend is also working as expected.
+
+## Congratulations on making it this far 🥇
+<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExN2xzbmRvNXczdWhtc3luZXRqMmF1ZzVyMXFhaGp6MTU3cW5vcnQ3OSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KAw0oBpBXAQbkVS4yG/giphy.gif" style="width:1000px;" >
 
 ## Conclusion
 
