@@ -184,7 +184,7 @@ node index.js
 ```
 In the terminal output we should see the message "Server running on port 5000". This means that the backend is working as expected.
 
-<img src="images/index-route-test.png" style="width:100%; padding-top:20px; padding-bottom:20px" alt="screenshot of terminal output showing index route test">
+<img src="images/working-express-page.png" style="width:100%; padding-top:20px; padding-bottom:20px" alt="screenshot of terminal output showing index route test">
 
 let's try it out in the browser. Open a browser and navigate to `http://<public-ip>:5000`. You should see the message "Welcome to the TO-DO app powered by MERN stack".
 
@@ -638,6 +638,7 @@ render() {
 
 export default Input;
 ```
+
 This code defines the `Input` component that will be used to add a new TO-DO item. The `Input` component has an input field and a button. The user can type the TO-DO item in the input field and click the button to add the TO-DO item. The `addToDo` method is called when the user clicks the button. The `handleChange` method is called when the user types in the input field.
 
 notice that we use `axios` to make a POST request to the backend to add a new TO-DO item. We will need to install the `axios` package. [axios] will make it easier to make HTTP requests from the frontend to the backend. To install the `axios` package, run the following command:
