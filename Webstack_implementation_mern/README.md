@@ -1,6 +1,8 @@
 # WEB STACK IMPLEMENTATION (MERN) in AWS
 
-<img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*5nNC-Evmu3YLDJud20taIQ.png" style="width:100%;" >
+<div style="display: flex; justify-content: center; align-items: center; margin: 20px 0;">
+    <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*5nNC-Evmu3YLDJud20taIQ.png" style="width: 100%; height: auto;">
+</div>
 
 # Introduction
 
@@ -22,11 +24,14 @@ Before we begin let's make sure you are all set to proceed. Below are the prereq
 
 ## Task - 100 Side Self Study
 
-Working as a DevOps Engineer in a team, I think it is important to appreciate the technology choices that are made. Often, having a basic understanding of the technology stack used by the team can help you make better decisions. For this task, I did a self-study on the technologies involved in the `MERN` stack.
+<p>Working as a DevOps Engineer in a team, I think it is important to appreciate the technology choices that are made. Often, having a basic understanding of the technology stack used by the team can help you make better decisions. For this task, I did a self-study on the technologies involved in the <code>MERN</code> stack.</p>
 
-<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZmhrczg3NmE2aHRna2xmZjRtYzJrdXR5cjJ6MzBvanp5N2lhOHZxcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/fsXOS3oBboiYf6fSsY/giphy.gif" style="width:1000px;" alt="gif showing a man on a book trolley in a library with a caption lets go to the library ">
 
-Here's what I learned:
+<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZmhrczg3NmE2aHRna2xmZjRtYzJrdXR5cjJ6MzBvanp5N2lhOHZxcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/fsXOS3oBboiYf6fSsY/giphy.gif" style="width:1000px%;" alt="gif showing a man on a book trolley in a library with a caption lets go to the library ">
+
+
+<p>Here's what I learned:</p>
+
 - **Relational vs Non-relational Database Management Systems**: Depending on the project goals and requirements, the development team can choose between a relational database management system (RDBMS) like MySQL, PostgreSQL, etc. or a non-relational database management system (NoSQL) like MongoDB, CouchDB, etc. I learned about the differences between these two types of databases and when to use them. For this specific implementation of MERN, we obviously will turn our attention to Mongodb. You can check out this [link](https://www.mongodb.com/nosql-explained/nosql-vs-sql) for more information.
 
 - **Javascript Programming Language**: Again the development team might choose to use Javascript as the programming Language for both ends of the application development or production stack. As a DevOps Engineer, I think it is important to appreciate the quirks of the language. I discovered that JavaScript is a [high-level](https://www.google.com/search?q=what+does+it+mean+when+a+programing+language+is+high+level&oq=what+does+it+mean+when+a+programing+language+is+high+level&aqs=chrome..69i57j33i160.22411j0j7&sourceid=chrome&ie=UTF-8), often [just-in-time compiled](https://www.google.com/search?q=what+does+it+mean+when+a+programing+language+is+just-in-time+compiled%3F&sca_esv=60dc4929967d691f&sca_upv=1&sxsrf=ADLYWIIh1Ifx4q5aXvtjWgVtsPZcIY1zSw%3A1716029073318&ei=kYZIZoP_EuO8hbIP2qGW4AM&ved=0ahUKEwjDi9u6gpeGAxVjXkEAHdqQBTwQ4dUDCA8&uact=5&oq=what+does+it+mean+when+a+programing+language+is+just-in-time+compiled%3F&gs_lp=Egxnd3Mtd2l6LXNlcnAiRndoYXQgZG9lcyBpdCBtZWFuIHdoZW4gYSBwcm9ncmFtaW5nIGxhbmd1YWdlIGlzIGp1c3QtaW4tdGltZSBjb21waWxlZD9IodIBUL8JWK7OAXAFeAGQAQCYAYgDoAGBP6oBCDAuMS4yNC41uAEDyAEA-AEBmAIdoAKYOMICChAAGLADGNYEGEfCAgQQIxgnwgIIEAAYgAQYogTCAgYQABgWGB7CAggQABgWGB4YD8ICCxAAGIAEGIYDGIoFwgIIEAAYogQYiQXCAgUQIRigAcICBxAhGKABGAqYAwCIBgGQBgiSBwo1LjAuMTYuNy4xoAfjwAE&sclient=gws-wiz-serp), and multi-paradigm programming language. It has a pretty neat syntax and it's suitable for [object-oriented software design](https://www.scaler.com/topics/software-engineering/object-oriented-design/#:~:text=Object%2Doriented%20design%20(OOD)%20is%20the%20process%20of%20creating,oriented%20programming%20(OOP)%20paradigm.). You can geek out on JavaScript [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript) enjoy :).
@@ -36,9 +41,11 @@ Here's what I learned:
 - **RESTful APIs**: I learned about RESTful APIs and how they are used to build web services that are lightweight, maintainable, and scalable. RESTful APIs are designed to take advantage of existing protocols. As a DevOps Engineer, I think it is important to understand how RESTful APIs work because they are the backbone of modern web services. I wiil have to work with them at some point. You can check out this [link](https://www.redhat.com/en/topics/api/what-is-a-rest-api) for more information.
 
 These are some of the things I discovered during my self-study. Doing the self-study was a great way to get up to speed with the technologies involved in the `MERN` stack. I am now ready to proceed with the implementation of the `MERN` stack application on AWS. Fun fact, we will be deploying a TO-DO web app on a `MERN` stack on AWS.
-Let's get our hands dirty now!! 
-<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExc2E1ZDZ1NmxjbHJtb3dzeDhodTNsaTA1Y2QyamVnc2NkcHBwbWM5eiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oFzm0Ocr6CC0URLsA/giphy.gif" style="width:1000px;" alt=" gif showing a caucasian male actor holding a sled hammer and a black male actor rolling the sleeve of his t-shirt">
 
+## Let's get our hands dirty now!! 
+<div style="display:flex; justify-content:center;">
+<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExc2E1ZDZ1NmxjbHJtb3dzeDhodTNsaTA1Y2QyamVnc2NkcHBwbWM5eiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oFzm0Ocr6CC0URLsA/giphy.gif" style="display:block; width:1000px; align-self:center;" alt=" gif showing a caucasian male actor holding a sled hammer and a black male actor rolling the sleeve of his t-shirt">
+</div>
 
 
 ## Task - 101 Prepare MERN Pre-requisites
@@ -51,7 +58,7 @@ Before we can deploy the  `MERN` stack application on AWS, we need to prepare th
 
 To kick things off I created an EC2 instance on AWs. I chose the Ubuntu linux distro and the set up the appropriate outboud and inboud rules. I then was able to connect to it using ssh.
 
-<img src="images/Mern-ec2-instance-ssh.png"style="width:100%; padding-top:20px; padding-bottom:20px" alt="screenshot of ec2 instance connected using ssh">
+<img src="images/Mern-ec2-instance-ssh.png" style="width:100%; padding-top:20px; padding-bottom:20px" alt="screenshot of ec2 instance connected using ssh">
 
 Our EC2 Instance is now ready for the next steps for developing and deploying the TO-DO web up on the MERN stack.
 The TO-DO web application will have a backend infrastructure using Node.js and Express.js, a frontend using React.js, and a NOSQL database set up using MongoDB. our Ubuntu EC2 instance will be the host for the backend and frontend of the application.
@@ -177,11 +184,11 @@ node index.js
 ```
 In the terminal output we should see the message "Server running on port 5000". This means that the backend is working as expected.
 
-<img src="images/index-route-test.png"style="width:100%; padding-top:20px; padding-bottom:20px" alt="screenshot of terminal output showing index route test">
+<img src="images/index-route-test.png" style="width:100%; padding-top:20px; padding-bottom:20px" alt="screenshot of terminal output showing index route test">
 
 let's try it out in the browser. Open a browser and navigate to `http://<public-ip>:5000`. You should see the message "Welcome to the TO-DO app powered by MERN stack".
 
-<img src="images/server-port.png"style="width:100%; padding-top:20px; padding-bottom:20px" alt="screenshot of browser showing index route message">
+<img src="images/server-port.png" style="width:100%; padding-top:20px; padding-bottom:20px" alt="screenshot of browser showing index route message">
 
 Great! The backend is working as expected. Before we do the next steps, let's quickly review what we have done so far.
 We are setting up a MERN stack application on AWS. After spinning up an EC2 instance, we installed Node.js and npm. We then set up the directory structure for the TO-DO app and initialized a new Node.js project. We installed the Express.js framework and created an index route to test if the backend is working as expected. The index route returns a message to the client when the client makes a request to the route. We also updated the inbound rules for the EC2 instance to allow traffic on port 5000. The backend is now ready for the next steps.
@@ -352,14 +359,14 @@ router.delete('/todos/:id', (req, res, next) => {
 
 module.exports = router;
 ```
-At this point our backend is almost ready. We have all the API endpoints the client side will need to interact with the backend. We have also defined the TO-DO model to create the TO-DO items.
+At this point our backend is almost ready. We have all the API endpoints the client side will need to interact with the backend. We have also defined the TO-DO model to create the TO-DO items. The next step is to connect the backend to the MongoDB database. 
 
-It's a lot of details let's just take a moment.
+## It's a lot of details let's just take a moment.
 
 <div align="center" style="margin: 50px 0;">
-    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGtlNnk0ZzJiaGk1dnl6amZ2ZXhwenY4NXVmamNzZW8xMTduZXE3aiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dDXZ3qU5nRBIe82Uit/giphy.gif" style="width:100%;">
+    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcTF5YWVrbDk4dzNlcWw2ZHJ4cm5yZnNjejZ0YzBwZ3p1MmR2MmhweiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hGHtmGskdTz30DkwoS/giphy.gif" style="width:160%;">
 </div>
-The next step is to connect the backend to the MongoDB database. 
+
 
 ## Task 106 - Set Up MongoDB Database
 
@@ -377,15 +384,15 @@ With a DBaaS solution like[ mLab ](https://www.mongodb.com/products/try-free/pla
 
 I created a free account on mLab and created a new database. I then created a new user for the database. soon we will be connecting our backend to the MongoDB database on mLab.
 
-<img src="images/DBaaS-page.png"style="width:100%; padding-top:20px; padding-bottom:20px" alt="screenshot of mlab page">
+<img src="images/DBaaS-page.png" style="width:100%; padding-top:20px; padding-bottom:20px" alt="screenshot of mlab page">
 
 I will create a database `Todo-list`database and the collection `todo-items` to store the TO-DO items. I also created a user `db-admin` with a password to access the database. I then retrieved the connection string for the database. The connection string will be used to connect the backend to the MongoDB database.
 
-<img src="images/collection-page.png"style="width:100%; padding-top:20px; padding-bottom:20px" alt="screenshot of mlab database">
+<img src="images/collection-page.png" style="width:100%; padding-top:20px; padding-bottom:20px" alt="screenshot of mlab database">
 
 The connection string to connect to database through the backend
 
-<img src="images/connection-string.png"style="width:100%; padding-top:20px; padding-bottom:20px" alt="screenshot of connection string">
+<img src="images/connection-string.png" style="width:100%; padding-top:20px; padding-bottom:20px" alt="screenshot of connection string">
 
 we will use this in our .env file to connect to the database.
 
@@ -402,10 +409,9 @@ It's time to test our connection to the database by starting the development ser
 node index.js
 ```
 
-#### It works!!!
+<img src="images/database-conection-success.png" style="width:100%; padding-top:20px; padding-bottom:20px" alt="screenshot of terminal output showing backend connection to database">
 
-<img src="images/database-conection-success.png"style="width:100%; padding-top:20px; padding-bottom:20px" alt="screenshot of terminal output showing backend connection to database">
-
+### It works!!!
 <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmFzOWNoNHVram0xZjd6Y2QweXJmaWtkMzJ1ZmVjZTc5dDJ5M2MxYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/XR9Dp54ZC4dji/giphy.gif" style="width:1000px;" alt="gif showing tv character michael scott being happy">
 
 The backend is now connected to the MongoDB database. The TO-DO items will be stored in the `Todo-list` database on mLab. The next step is to test the API endpoints using Postman.
@@ -565,7 +571,7 @@ before we test it in the browser let's update the inbound rules of the EC2 insta
 
 I added a custom TCP rule for port 3000 to allow traffic from all IP addresses.
 
-<img src="new-client-inbound-rule.png" style="width:100%;" alt="screenshot showing new inbound rule for client">
+<img src="images/new-client-inbound-rule.png" style="width:100%;" alt="screenshot showing new inbound rule for client">
 
 ### Test Frontend in the Browser
 
@@ -576,7 +582,7 @@ If the EC2 server is still running you will see the client app working [here](ht
 
 We can also retrieve all todo items using the client side URI http://16.171.255.38:3000/api/todos)
 
-<img src="images/postman-clientside.png" style="width:100%;" alt="screenshot showing get request in the browser">
+<img src="images/postman-clienside.png" style="width:100%;" alt="screenshot showing get request in the browser">
 
 The frontend is working as expected. 
 
