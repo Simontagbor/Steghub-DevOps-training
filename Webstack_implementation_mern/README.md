@@ -111,7 +111,7 @@ I initialized a new Node.js project in the Todo directory using the following co
 npm init
 ```
 
-<img src="images/npm-init.png"style="width:100%; padding-top:20px; padding-bottom:20px" alt="screenshot of terminal output showing package.json file created during project init">
+<img src="images/npm-init.png" style="width:100%; padding-top:20px; padding-bottom:20px" alt="screenshot of terminal output showing package.json file created during project init">
 
 The `npm init` command creates a `package.json` file in the Todo directory. The `package.json` file contains metadata about the project and the dependencies required to run the project. Next, we will install the dependencies required to run the TO-DO app.
 
