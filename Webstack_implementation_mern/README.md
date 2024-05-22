@@ -92,7 +92,8 @@ node -v
 npm -v
 ```
 The output should be the version of Node.js and npm installed.
-<img src="images/node-instalation.png"style="width:100%; padding-top:20px; padding-bottom:20px" alt="screenshot of terminal output showing npm and node versions">
+
+<img src="images/node-instalation.png" style="width:100%; padding-top:20px; padding-bottom:20px;" alt="screenshot of terminal output showing npm and node versions">
 
 great! Node.js and npm are now installed on our EC2 instance. Next, we will set up the directory structure for the TO-DO app. This helps to keep the codebase organized and maintainable.
 
