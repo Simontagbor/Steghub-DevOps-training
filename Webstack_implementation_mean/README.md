@@ -1,12 +1,20 @@
-# How I Implemented a Book Register Web App Using MEAN Stack on AWS
+# Implementing a Book Register App Using MEAN Architecture on AWS
 
 <div style="display: flex; justify-content: center; align-items: center; margin: 20px 0;">
-   <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*5nNC-Evmu3YLDJud20taIQ.png" style="width: 100%; height: auto;">
+   <img src="https://i0.wp.com/techprimelab.com/wp-content/uploads/2020/06/host-mean-app-on-aws-img.jpg?resize=1024%2C576&ssl=1" style="width: 100%; height: auto;">
 </div>
 
 ## Introduction
 
 As a DevOps Engineer in training at Steghub, I am documenting my process for implementing a `MEAN` stack application. The `MEAN` stack is a JavaScript-based web architecture framework used to build and deploy web applications. It includes four open-source components: **M**ongoDB, **E**xpress, **A**ngular, and **N**ode. These components provide a comprehensive framework for web developers. This documentation will detail the steps necessary to successfully implement a `MEAN` stack application.
+
+## What to Expect
+> This documentation covers the following tasks
+> 
+> - [x] Setting Up EC2 Instance on AWS with MEAN architecture
+> - [x] Configuring Backend Server for Web App
+> - [x] Configuring and connecting Frontend to backend server
+> - [x] End-to-end automation of the Implementation of a MEAN Stack on AWS [Bonus side quest :)]
 
 ## Prerequisites
 
@@ -25,27 +33,30 @@ Detailed setup instructions and the deployment process will be provided in the s
 # Tasks
 
 ## Task - 100 Side Self Study
-<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZmhrczg3NmE2aHRna2xmZjRtYzJrdXR5cjJ6MzBvanp5N2lhOHZxcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/fsXOS3oBboiYf6fSsY/giphy.gif" style="width:1000px%;" alt="gif showing a man on a book trolley in a library with a caption lets go to the library ">
+As a tradition at Steghub, before getting into any project, we are tasked to explore some Key DevOps concepts. For this task, I read about the [OSI model](https://en.wikipedia.org/wiki/OSI_model) and some common [load-balancing](https://en.wikipedia.org/wiki/Load_balancing_(computing)) techniques.
+
+<img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZzBnZDNzbXA4d2diem0xdDJxdXh4d2k4bG5tcWQxNHptZWZ4YTZlMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ZIzN7YWNuTUYg/giphy.gif" style="width:1000px;" alt="gif showing a man on a book trolley in a library with a caption lets go to the library ">
 
 
 <p>Here's what I learned:</p>
 
-Working as a DevOps Engineer in a team, Knowing the standards and protocols that coordinate the interconnection of networks on which clients and servers operate can be very helpful. It is also useful to understand the load-balancing techniques for managing traffic to Web stack servers. I did personal research about the [OSI model](https://en.wikipedia.org/wiki/OSI_model) and some common [load-balancing](https://en.wikipedia.org/wiki/Load_balancing_(computing)) techniques.
-
-As A DevOps Engineer, the OSI model can be a great reference during troubleshooting and debugging network issues at specific layers of the networking infrastructure. The OSI model can also be helpful during the implementation of security measures at different layers of the model. In general, the OSI model was a good reference for understanding how network devices communicate with each other and where the DevOps Engineer can come in to optimize the communication process. You can check out this [link](https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/) for more information.
-
-I also learned about load-balancing techniques and how they are used to distribute incoming network traffic across multiple servers. Load balancing ensures that no single server becomes overwhelmed with traffic, which can lead to slow performance or downtime. As a DevOps Engineer, getting familiar with load-balancing techniques is critical for ensuring high-availability and fault-tolerant systems. You can check out this [link](https://www.nginx.com/resources/glossary/load-balancing/) for more information.
-
-Doing the self-study was a great way to get up to speed with the technologies and techniques involved in the `MEAN` stack. I am now ready to proceed with the implementation of the `MEAN` stack application on AWS. Fun fact, we will be deploying a Book Register web app on a `MEAN` stack on AWS.
-
-## Let's get our hands dirty now!! 
+>  
+>
+> As A DevOps Engineer, the OSI model can be a great reference during troubleshooting and debugging network issues at specific layers of the networking infrastructure. The OSI model can also be helpful during the implementation of security measures at different layers of the model. In general, the OSI model was a good reference for understanding how network devices communicate with each other and where the DevOps Engineer can come in to optimize the communication process. You can check out this [link](https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/) for more information.
+>
+> I also learned about how DevOps engineers can use load-balancing techniques to distribute incoming network traffic across multiple servers. Load balancing ensures that no single server becomes overwhelmed with traffic, which can lead to slow performance or downtime. As a DevOps Engineer, getting familiar with load-balancing techniques is critical for ensuring high-availability and fault-tolerant systems. You can check out this [link](https://www.nginx.com/resources/glossary/load-balancing/) for more information.
+>
+> Doing the self-study was a great way to get up to speed with the some key concepts and techniques involved in the Work as a DevOps engineer. 
+I am now ready to proceed with the implementation of the `MEAN` stack application on AWS. Fun fact, we will be deploying a Book Register web app on a `MEAN` stack on AWS.
+>
+## Let's get Started!!....excited? 
 
 <div style="display:flex; justify-content:center;">
-<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExc2E1ZDZ1NmxjbHJtb3dzeDhodTNsaTA1Y2QyamVnc2NkcHBwbWM5eiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oFzm0Ocr6CC0URLsA/giphy.gif" style="display:block; width:1000px; align-self:center;" alt=" gif showing a caucasian male actor holding a sled hammer and a black male actor rolling the sleeve of his t-shirt">
+<img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYjNiYmpjYmJrcjEzMWpuNjg2c2h0MzJpcDFvZnRrYThxM3N3aGR2dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/sFdhuCRa0OaEbQDrBd/giphy.gif" style="display:block; width:1000px; align-self:center;" alt=" gif showing a caucasian male actor holding a sled hammer and a black male actor rolling the sleeve of his t-shirt">
 </div>
 
 
-## Task - 101 Prepare MEAN Pre-requisites
+## Task - 101 Prepare EC2 Instance
 
 Before we can deploy the  `MEAN` stack application on AWS, we need to prepare the following prerequisites:
 
@@ -58,21 +69,23 @@ Before we can deploy the  `MEAN` stack application on AWS, we need to prepare th
 
 ### Automating the process
 
-I already have an AWS account, let's go ahead and provision an EC2 instance to create a `MEAN` stack for our Book Register web app.
-In my previous [projects]() I have been manually setting up the web infrastructure. This time I will be automating the process using the [Infrastructure as Code(IaC)]() paradigm. This model encourages us to think of software application infrastructure as if it were code, which can be versioned, tested, and deployed with the same rigor as application code.
+In my previous [projects](https://github.com/Simontagbor/Steghub-DevOps-training/README.md) I have been manually setting up the web infrastructure. This time I will be automating the process using the [Infrastructure as Code(IaC)](https://aws.amazon.com/what-is/iac/) paradigm. This model encourages us to think of software application infrastructure as if it were code, which can be versioned, tested, and deployed with the same rigor as application code.
 I will use Amazon's [CloudFormation]() IaC tool to automate the process of setting up the prerequisites for a `MEAN` stack.
+
+#### I am a lazy programmer..
+<div style="display:flex; justify-content:center;">
+<img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExeWF2ZThvNTh4NnUxdzJkdzR3c3cycWJteDFybHNkbmRnMXc3cjRseSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/y6Inkaz7omxAk/giphy.gif" style="display:block; width:600px; align-self:center;" alt=" gif showing a caucasian male actor holding a sled hammer and a black male actor rolling the sleeve of his t-shirt">
+</div>
 
 #### Planing the Automation Process
 
 Looking back on my previous projects, I identified the following steps I could automate using CloudFormation:
 
-1. **Create an EC2 Instance**: I will create a CloudFormation template that provisions an EC2 instance with the necessary configurations.
+> - 1. **Create an EC2 Instance**
+> - 2. **Update Firewall Rules**
+> - 3. **Environment Setup**: 
 
-2. **Update Firewall Rules**: I will update the security group associated with the EC2 instance to allow inbound traffic on port 22 (SSH) and port 80 (HTTP).
-
-3. Environment Setup: I will install Node.js, MongoDB, and Express.js on the EC2 instance using a CloudFormation template.
-
-I gathered all the necessary technical requirements for the MEAN stack application and created a CloudFormation template to automate the process of setting up the prerequisites for the AWS EC2 instance. The result is a `YAML` file that defines the resources and configurations needed to set up the MEAN stack application.
+I gathered all the necessary technical requirements for the MEAN stack application and created a [CloudFormation template](https://www.simplilearn.com/tutorials/aws-tutorial/aws-cloudformation#:~:text=A%20collection%20of%20AWS%20resources%20is%20called%20a%20stack%2C%20and,to%20run%20a%20web%20application.) to automate the process of setting up the prerequisites for the AWS EC2 instance. The result is a `YAML` file that defines the resources and configurations needed to set up the MEAN stack application.
 
 ```yaml
 Metadata:
@@ -147,7 +160,7 @@ To configure the AWS CLI, run the following command:
 aws configure
 ```
 
-You will be prompted to enter your AWS Access Key ID, AWS Secret Access Key, Default region name, and Default output format. You can find your Access Key ID and Secret Access Key in the AWS Management Console under your user account.
+You will be prompted to enter your [AWS Access Key ID](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user_manage_add-key.html), AWS Secret Access Key, Default region name, and Default output format. You can find your Access Key ID and Secret Access Key in the AWS Management Console under your user account.
 
 ```bash
 AWS Access Key ID [None]: <your-access-key-id>
@@ -340,12 +353,15 @@ let's spin up the newly configured backend server
 sudo node server.js
 ```
 <img src="images/backend-server-ready.png" style="width:100%; padding-top:20px; padding-bottom:20px;" alt="screenshot of terminal output showing content of package.json file">
+The server is up as expected great job!.
 
-The server is up as expected. next up let's create the frontend with angular.
+#### Hang in there..
+<img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExc3JremttZHptb3FjNGMweGFvOW4wM21uaTVreDB2dHJ1ZDIwZHh2byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/RjQ68u1NIlcL47cCN0/giphy.gif" style="display:block; width:900px; align-self:center;">
 
+Next up, let's create the frontend with angular.
 ## Task - 103 Configure Frontend
 
-For the MEAN stack, we need to use Angular - the frontend framework for building client-facing webpages. Angular uses the Model-View-Controller (MVC) architecture to build dynamic web applications. The MVC architecture separates the application into three components: the model (data), the view (UI), and the controller (logic). For the Book Register app, we will create views for adding, deleting and displaying books. The model will be the book object, and the controller will handle the logic for interacting with the backend server.
+For the MEAN stack, we need to use Angular - the frontend framework for building client-facing webpages. Angular uses the [Model-View-Controller (MVC)](https://developer.mozilla.org/en-US/docs/Glossary/MVC#:~:text=MVC%20(Model%2DView%2DController,of%20labor%20and%20improved%20maintenance.))architecture to build dynamic web applications. The MVC architecture separates the application into three components: the model (data), the view (UI), and the controller (logic). For the Book Register app, we will create views for adding, deleting and displaying books. The model will be the book object, and the controller will handle the logic for interacting with the backend server.
 
 In this task, we will set up the front end for the Book Register web app using AngularJS.
 
@@ -455,7 +471,7 @@ Our AngularJS view is now ready to interact with the backend server. The view di
 
 I updated the security group associated with the EC2 instance to allow inbound traffic on port 3300. This will allow clients to access the Book Register web app on the EC2 instance.
 
-<img src="images/inboundrule.png" style="width:100%; padding-top:20px; padding-bottom:20px;" alt="screenshot of inbound rule for port 3300">
+<img src="images/inboundrules.png" style="width:100%; padding-top:20px; padding-bottom:20px;" alt="screenshot of inbound rule for port 3300">
 
 
 ## Testing the Book Register Web App
@@ -484,7 +500,10 @@ In this documentation, we successfully implemented a Book Register web app using
 
 I hope this documentation helped you understand the process of implementing a `MEAN` stack application on AWS. If you have any questions or feedback, feel free to reach out. Happy coding!
 
-## finally our very own side quest.
+# Bonus Side Quest
+<img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExM25tMHVydnV6OTNkb3gxdTliNjhxdjc0bXlqNmgwb2dyZDhoM21iZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/NbM5W9RrR6ex1gZ84H/giphy.gif" style="display:block; width:900px; align-self:center;">
+
+## End-to-end Automation of MEAN Stack Implementation
 
 looking back at our automation process, how might we automate the entire process from provisioning to setting up and running the codebase for the development of the book register app on aws? A job well done will be to create an ec2 instance configured to run a minimal version of the app on port 3300.
 
@@ -555,7 +574,9 @@ The script provisions an EC2 instance, installs the necessary packages, clones t
 
 let's verify the automation process by navigating to the public IP address of the EC2 instance on port 3300.
 
-### It works!!
+## It works!!
+
+### You can interact with the app we automatically implemented [Here](http://54.147.209.24:3300)
 
 <a href="http://54.147.209.24:3300">
 <img src="images/automated-deployment.png" style="width:100%; padding-top:20px; padding-bottom:20px;" alt="screenshot of the book register web app">
