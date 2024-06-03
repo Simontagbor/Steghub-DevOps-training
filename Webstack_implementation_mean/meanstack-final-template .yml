@@ -1,0 +1,45 @@
+Parameters:
+  InstanceName:
+    Type: String
+    Description: Name of the EC2 instance
+
+Resources:
+  MEANStackServer:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-03e9149278a6f457c # Image id for Ubuntu OS
+      InstanceType: t2.micro # choose eligible free tier instance type
+      KeyName: AdminKey # key name for ssh access
+      UserData: 
+        Fn::Base64: |
+          #!/bin/bash
+          # Update the package lists for upgrades and new package installations
+          sudo apt-get update 
+          # Upgrade all the installed packages to their latest version
+          sudo apt upgrade
+          # Install necessary packages
+          sudo apt-get install -y curl dirmngr apt-transport-https lsb-release ca-certificates
+          # Install Node.js and npm
+          curl -sL https://deb.nodesource.com/setup_16.x | bash -
+          sudo apt install nodejs
+          # Install body-parser globally
+          sudo npm install -g body-parser
+          # Add MongoDB's GPG key
+          sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
+          # Add MongoDB's repository details
+          echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+          # Install MongoDB
+          sudo apt install -y mongodb
+          # Start the MongoDB service
+          sudo service mongodb start
+          # add project repository
+          sudo git clone https://github.com/Simontagbor/Books.git && cd Books
+          # Install project dependencies
+          sudo npm install
+          # Start the backend server
+          sudo node server.js
+      Tags:
+        - Key: Name
+          Value: !Ref InstanceName
+      SecurityGroupIds:
+        - sg-0bb682b3a2b72bf9d
