@@ -71,15 +71,15 @@ The terminal output indicates the successful connection of the client instance t
 <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjJ6Z2RwZnBxandoOHlvdWZsM2J0Mm10c2xyeGk0aWFjZm1oOHQ3MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dyY7hNU2vfe9pr0yGA/giphy.gif" style="width:1000px;">
 
 ## Bonus Side Quest 
+<img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExM25tMHVydnV6OTNkb3gxdTliNjhxdjc0bXlqNmgwb2dyZDhoM21iZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/NbM5W9RrR6ex1gZ84H/giphy.gif" style="display:block; width:1000px; align-self:center;">
 
 ### Monitoring our `mysql-server` Instance
 
-<img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExM25tMHVydnV6OTNkb3gxdTliNjhxdjc0bXlqNmgwb2dyZDhoM21iZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/NbM5W9RrR6ex1gZ84H/giphy.gif" style="display:block; width:1000px; align-self:center;">
-
 Now that we have the client-server architecture set up, let's pause and consider for a moment, the need to know what is happening to the server instances on which client instances depend. This is where monitoring and logging come into mind and I wanted to try it out.
 
-let's imagine that we are *DevOp ninjas* working with a team of *rockstar Developers* on a government **top-secret project**. The team will use the client-server architecture we just set up.(*shh...*) Ironically, our team has a tight budget around CPU usage on the dedicated `mysql-server` instance. To stay within budget, we need to figure out a way to notify, and or take action when the CPU utilization exceeds a certain threshold.
-
+> let's imagine that we are *DevOp ninjas* working with a team of *rockstar Developers* on a government **top-secret project**. The team will use the client-server architecture we just set up.(*shh...*) unfortunately, our team had a tight budget around CPU usage on the dedicated `mysql-server` instance. To stay within budget, we need to figure out a way to notify, and or take action when the CPU utilization exceeds a certain threshold.
+>
+> 
 To achieve this, we will set up AWS CloudWatch to monitor the `mysql-server` instance. We will set up an alarm to notify the developers when the CPU utilization exceeds a certain threshold. We will also set up a dashboard to monitor the CPU utilization of the `mysql-server` instance. let's get started.
 
 
