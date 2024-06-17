@@ -198,5 +198,6 @@ To keep an extra high-level eye on the CPU utilization, I also set up a dashboar
 
 In this project, I successfully set up a client-server architecture on AWS. I configured two EC2 instances to serve as the client and server. I set up security groups to allow the client to connect to the server. I verified the connection between the client and server by connecting to the server instance from the client instance. I also set up CloudWatch monitoring on the server instance to monitor the CPU utilization and set up an alarm to notify the developers when the CPU utilization exceeds a certain threshold. I hope you found this project helpful and informative. Thank you for reading!
 
-<img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExaWIyOWhyMDhscXg2aDFhdncyMXM2cXlpZTVyY3h1dTRrMXZneTBmcCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wvWGKeTUgz1rrrWq27/giphy.gif
-" style="display:block; width:1000px; align-self:center;">
+
+<img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExaWIyOWhyMDhscXg2aDFhdncyMXM2cXlpZTVyY3h1dTRrMXZneTBmcCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wvWGKeTUgz1rrrWq27/giphy.gif" style="display:block; width:1000px; align-self:center;">
+
