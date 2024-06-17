@@ -1,7 +1,7 @@
 # How to Set Up a Client-Server Architecture on AWS
 
 <div style="display: flex; justify-content: center; align-items: center; margin: 20px 0;">
-   <img src="https://miro.medium.com/v2/resize:fit:1024/0*V2TNr853okUrVcSV.png" style="width: 100%; height: auto;">
+   <img src="./images/image.png" style="width: 100%; height: auto;">
 </div>
 
 ## Introduction
