@@ -6,14 +6,20 @@
 
 ## Introduction
 
-For this project, I will be documenting the steps I took to successfully set up a secured client-server architecture on AWS. client-server architecture is a computing model in which the **server**- *a high-powered computer*- hosts, delivers and manages most of the resources and services to be consumed by the **client** - *any computer, device or browser*. This type of architecture has one or more client computers connected to a central server over a network or internet connection. The server provides the clients with access to share data, information, and resources. The server provides the client computer or device- with access to share data, information, and resources. A DevOps engineer must understand how to set up a client-server architecture as it is a fundamental concept in the field of computing. This project helped me understand how to set up a client-server architecture on AWS. I hope you find this project helpful and informative.
+For this project, I will be documenting the steps I took to successfully set up a secured client-server architecture on AWS. In this computing model;
+
+- the **server**- *a high-powered computer*- hosts, delivers and manages most of the resources and services to be consumed by
+  
+- the **client** - *any computer, device or browser*.
+
+This type of architecture has one or more client computers connected to a central server over a network or internet connection. The server provides the clients with access to share data, information, and resources. The server provides the client computer or device- with access to share data, information, and resources. A DevOps engineer must understand how to set up a client-server architecture as it is a fundamental concept in the field of computing. I hope you find this project documentation helpful and informative.
 
 ## Prerequisites
 
 Before you begin, you need to have the following:
 
 - [x] An AWS account. If you don't have one, you can create one [here](https://aws.amazon.com/)
-- [x] A basic understanding of AWS services such as [EC2](), [VPC](), and [Security Groups]().
+- [x] A basic understanding of AWS services such as [EC2](https://www.googleadservices.com/pagead/aclk?sa=L&ai=DChcSEwiihNTb1OOGAxX7jVAGHfZuAccYABAAGgJkZw&ase=2&gclid=Cj0KCQjwvb-zBhCmARIsAAfUI2u6E-7CBbQ8u3agA2N4vsfs1l4cD7utGRBcuh0UME4Dn_y8Tt-hO7oaAlTGEALw_wcB&ei=XrVwZpLyCK2lhbIPv_yW-Ak&ohost=www.google.com&cid=CAESVeD2ShWjdWl8WFIXl_cAdpM3wyCtSWq_4EG6nNcXKxC7b8kdnL1sD4lKFu5ccToqAVAzz84HaqoMj5f-wh4pxoXP-Dc0pNg-ha3h5dDCckBHH-Uojyk&sig=AOD64_26JhNZiHxzgDGn9C8N6P4-OvyOPw&q&sqi=2&nis=4&adurl&ved=2ahUKEwiSmc_b1OOGAxWtUkEAHT--BZ8Q0Qx6BAgKEAE), [VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html), and [Security Groups](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html).
 
 ## What to Expect
 
@@ -25,19 +31,19 @@ Before you begin, you need to have the following:
 > - [x] Verifying the connection between the client and server
 > - [x] Setting up AWS CloudWatch for monitoring and logging
 
-## Tasks
+<img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ3Y1eW8xYzJ6ZXZtZ2JnenRmNnNyMmo5N214bnpwdXFuZHIxN3p5ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/64aBXTVfd90zyUH2da/giphy.gif" style="width:1000px">
 
 ### Launching EC2 Instances
 
 I created two instances manually using the AWS Management Console. One instance will serve as the client and the other as the server. I will be using `Ubuntu 24` on both ec2 instances. I then SSH into both instances to configure them for the client-server architecture.
 
-<img src="./images/ec2-instances.png" alt="EC2 Instances" style="width: 100%; height: auto;">
+<img src="./images/ec2-instances.png" alt="EC2 Instances" style="width: 1000px; height: auto;">
 
 my client instance has the following details:
-- mysql-client installation
+- `mysql-client installation`
 
 my server instance has the following details:
-- mysql-server installation
+- `mysql-server installation`
 
 we can now proceed to configure the EC2 instances to allow the client to connect to the server.
 
@@ -46,7 +52,7 @@ we can now proceed to configure the EC2 instances to allow the client to connect
 Let's set up the inbound rules for the security group of the server instance to allow the client to connect to the server.
 In the AWS EC2 instance console, I updated the inbound rules of the security group of the server instance by adding a new rule to allow the client to connect to the server on port 3306. Port 3306 is the default port for MySQL.
 
-<img src="./images/inboudrules.png" alt="Inbound Rules" style="width: 100%; height: auto;">
+<img src="./images/inboudrules.png" alt="Inbound Rules" style="width: 1000px; height: auto;">
 
 ### Verifying the Connection Between the Client and Server
 
@@ -56,16 +62,23 @@ I SSH-ed into the client instance and connect to the server instance using the f
 mysql -h <server-ip> -u root
 ```
 
-<img src="./images/verified.png" alt="MySQL Connection" style="width: 100%; height: auto;">
+<img src="./images/verified.png" alt="MySQL Connection" style="width: 1000px; height: auto;">
 
 The terminal output indicates the successful connection of the client instance to the server instance. This verifies that the client-server architecture has been successfully set up on AWS.
 
-## Side Quest - Monitoring our Server Instance
-<img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExM25tMHVydnV6OTNkb3gxdTliNjhxdjc0bXlqNmgwb2dyZDhoM21iZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/NbM5W9RrR6ex1gZ84H/giphy.gif" style="display:block; width:900px; align-self:center;">
+###  Awesome it worked as expected!! 
+
+<img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjJ6Z2RwZnBxandoOHlvdWZsM2J0Mm10c2xyeGk0aWFjZm1oOHQ3MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dyY7hNU2vfe9pr0yGA/giphy.gif" style="width:1000px;">
+
+## Bonus Side Quest 
+
+### Monitoring our `mysql-server` Instance
+
+<img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExM25tMHVydnV6OTNkb3gxdTliNjhxdjc0bXlqNmgwb2dyZDhoM21iZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/NbM5W9RrR6ex1gZ84H/giphy.gif" style="display:block; width:1000px; align-self:center;">
 
 Now that we have the client-server architecture set up, let's pause and consider for a moment, the need to know what is happening to the server instances on which client instances depend. This is where monitoring and logging come into mind and I wanted to try it out.
 
-let's imagine that we are DevOp ninjas working with a team of rockstar developers on a government top-secret project. The team will use the client-server architecture we just set up.(shh...) Ironically, our team has a tight budget around CPU usage on the dedicated `mysql-server` instance. To stay within budget, we need to figure out a way to notify, and or take action when the CPU utilization exceeds a certain threshold.
+let's imagine that we are *DevOp ninjas* working with a team of *rockstar Developers* on a government **top-secret project**. The team will use the client-server architecture we just set up.(*shh...*) Ironically, our team has a tight budget around CPU usage on the dedicated `mysql-server` instance. To stay within budget, we need to figure out a way to notify, and or take action when the CPU utilization exceeds a certain threshold.
 
 To achieve this, we will set up AWS CloudWatch to monitor the `mysql-server` instance. We will set up an alarm to notify the developers when the CPU utilization exceeds a certain threshold. We will also set up a dashboard to monitor the CPU utilization of the `mysql-server` instance. let's get started.
 
@@ -79,6 +92,8 @@ I followed these steps to set up CloudWatch monitoring on the `mysql-server` ins
     I followed the [official AWS CLI User Guide](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html) to get `aws=cli` installed.
 
 2. I then **Created an IAM role for CloudWatch and attached the CloudWatchAgentServerPolicy**:
+
+   I used the terminal instead of the console page.
 
     ```bash
     aws iam create-role --role-name CWAgentRole --assume-role-policy-document file://TrustPolicyForCWAgent.json
@@ -100,7 +115,7 @@ I followed these steps to set up CloudWatch monitoring on the `mysql-server` ins
     }
     ```
 
-3. **I then attached the IAM role to the `mysql-server`  instance**:
+4. **I then attached the IAM role to the `mysql-server`  instance**:
 
     ```bash
     aws ec2 associate-iam-instance-profile --instance-id i-1234567890abcdef0 --iam-instance-profile Name=CWAgentRole
@@ -156,7 +171,7 @@ You should get the following output:
     ```
 you should get the following output:
 
-<img src="./images/cloudwatch-agent-succes.png" alt="AWS CloudWatch Agent Status" style="width: 100%; height: auto;">
+<img src="./images/cloud-watch-status.png" alt="AWS CloudWatch Agent Status" style="width: 100%; height: auto;">
 
 Now that the CloudWatch agent is running, we can monitor the server instance using AWS CloudWatch console.
 
@@ -170,9 +185,9 @@ To keep an extra high-level eye on the CPU utilization, I also set up a dashboar
 
 <img src="./images/cloudwatch-dashboard.png" alt="AWS CloudWatch Dashboard" style="width: 100%; height: auto;">
 
-##### Keeping an eye on you CPU! 
+### Keeping an eye on you CPU! 
 
-<img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExM25tMHVydnV6OTNkb3gxdTliNjhxdjc0bXlqNmgwb2dyZDhoM21iZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/NbM5W9RrR6ex1gZ84H/giphy.gif" style="display:block; width:900px; align-self:center;">
+<img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdDFsdWFwODhibG45M2hieWp2YzZpeWpmN3c4cTdsbnBoeDd3NmM2YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/uuoWgSRor8CA0/giphy.gif" style="display:block; width:1000px; align-self:center;">
 
 ## Easter Egg
 >
@@ -183,4 +198,5 @@ To keep an extra high-level eye on the CPU utilization, I also set up a dashboar
 
 In this project, I successfully set up a client-server architecture on AWS. I configured two EC2 instances to serve as the client and server. I set up security groups to allow the client to connect to the server. I verified the connection between the client and server by connecting to the server instance from the client instance. I also set up CloudWatch monitoring on the server instance to monitor the CPU utilization and set up an alarm to notify the developers when the CPU utilization exceeds a certain threshold. I hope you found this project helpful and informative. Thank you for reading!
 
-
+<img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExaWIyOWhyMDhscXg2aDFhdncyMXM2cXlpZTVyY3h1dTRrMXZneTBmcCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wvWGKeTUgz1rrrWq27/giphy.gif
+" style="display:block; width:1000px; align-self:center;">
