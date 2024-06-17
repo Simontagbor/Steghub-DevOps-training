@@ -11,3 +11,5 @@ This repository documents project-based learning tasks for the Steghub DevOps En
 3. [Web Stack Implementation (MERN) in AWS](./Webstack_implementation_mern/README.md)
 
 4. [Web Stack Implementation (MEAN)](Webstack_implementation_mean)
+   
+6. [Client-Server Architecture Implementation on AWS](https://github.com/Simontagbor/Steghub-DevOps-training/blob/main/Client_Server_Architecture/README.md)
