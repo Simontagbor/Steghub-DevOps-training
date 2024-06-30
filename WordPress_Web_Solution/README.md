@@ -1,7 +1,7 @@
 # DevOps Web Solution With WordPress
 
 <div style="display: flex; justify-content: center; align-items: center; margin: 20px 0;">
-   <img src="./images/image.png" style="width: 100%; height: auto;">
+   <img src="./images/wordpress-banner.png" style="width: 100%; height: auto;">
 </div>
 
 ## Introduction
@@ -33,12 +33,13 @@ To follow along with this project, you need to have the following:
 > - The Database server should be a MySQL server and should listen on port 3306 for only the web server through private IP.
 
 
-To kick things off, I created two AWS EC2 instances
-<img src="./images/webserver.png" style="width: 100%; height: auto;">
-
-In the coming sections, we will take a look at how I set up the web server and the database server to meet the requirements above.
 
 ## Tasks
+
+To kick things off, I created two AWS EC2 instances
+<img src="./images/webserver.png" style="width: 100%; height: auto; margin-top:30px;">
+
+In the coming sections, we will take a look at how I set up the web server and the database server to meet the requirements above.
 
 ## Part One - Setting Up Hardware and Storage
 
@@ -48,7 +49,7 @@ In the coming sections, we will take a look at how I set up the web server and t
 
 I created a Red Hat-based Linux instance on AWS and set up a web server on it. I then attached three EBS volumes to the web server instance.
 
-<img src="./images/attachedEBS.png" style="width: 100%; height: auto;">
+<img src="./images/attachedEBS.png" style="width: 100%; height: auto; margin-top:30px; margin-bottom:30px;">
 
 For details on how to set up an AWS EBS 
 volume, see this simple guide [here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-volume.html)
@@ -68,7 +69,7 @@ $ lsblk
 ```
 I got the following terminal output to confirm
 
-<img src="./images/lblskoutput.png" style="width: 100%; height: auto;">
+<img src="./images/lblskoutput.png" style="width: 100%; height: auto; margin-top:30px; margin-bottom:30px;">
 
 Let's also check if there are already existing partitions using `lvm2`package.
 
@@ -128,7 +129,7 @@ sudo lvmdiskscan
 ```
 You should get a similar terminal output
 
-<img src="./images/parti-out.png" style="width: 100%; height: auto;">
+<img src="./images/parti-out.png" style="width: 100%; height: auto; margin-top:30px; margin-bottom:30px;">
 
 You can see in the terminal output that I have three partitions created using the same steps.
 
@@ -232,7 +233,7 @@ sudo vgdisplay -v
 
 You should get an output similar to this:
 
-<img src="./images/completesetup.png" style="width: 100%; height: auto;">
+<img src="./images/completesetup.png" style="width: 100%; height: auto; margin-top:30px; margin-bottom:30px;">
 
 Great!! by now you should have all three EBS volumes partitioned and set up with physical volumes, volume groups, and logical volumes.
 
@@ -314,7 +315,7 @@ sudo blkid
 ```
 Your terminal output should look similar to this:
 
-<img src="./images/blkid.png" style="width: 100%; height: auto;">
+<img src="./images/blkid.png" style="width: 100%; height: auto; margin-top:30px; margin-bottom:30px;">
 
 Copy the UUID of the logical volumes(`app-lv` and `data-lv`) and update the `/etc/fstab` file using the `vim` editor.
 and update the `/etc/fstab` file using the `vim` editor.
@@ -346,7 +347,7 @@ df -h
 ```
 Your terminal output should look similar to this:
 
-<img src="./images/df-h.png" style="width: 100%; height: auto;">
+<img src="./images/df-h.png" style="width: 100%; height: auto; margin-top:30px; margin-bottom:30px;">
 
 Great!! by now you should have all three EBS volumes partitioned and set up with physical volumes, volume groups, and logical volumes. You should also have the logical volumes formatted and mounted to the appropriate directories.
 
@@ -443,6 +444,9 @@ sudo setsebool -P httpd_can_network_connect_db 1
 MySQL is a popular open-source relational database management system that is widely used to store data for web applications. We will install MySQL on the database server and configure it to listen on port 3306 for only the web server through a private IP.
 
 To avoid some of the [data transfer charges](https://www.google.com/search?q=data+transfer+charges+by+cloud+providers&oq=data+transfer+charges+by+cloud+providers&aqs=chrome..69i57j33i160.21886j0j7&sourceid=chrome&ie=UTF-8) by some cloud providers when transferring data between servers in the same region, we can use the private IP of the webserver to connect to the database server in the same virtual private cloud.
+
+##### *Every penny counts!!*
+<img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjRpenQ2ajJtZnlwaW9yNzhvYzh3bTE4MDFkbXI1ZW9jbzI2cGl0NCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/TpLfalAKqsld0b7gMS/giphy.gif" style="width:1000px; margin-top:30px; margin-bottom:30px;">
 
 Assuming we have a sudden surge in traffic to our WordPress site, we will save money and probably reduce latency by making the instances share data using the local network of the virtual private cloud.
 
@@ -563,7 +567,7 @@ You should be prompted to enter the password you set for the `WordPress` user. I
 
 I also updated the firewall rules on the webserver to allow traffic from the database server on port 3306
 
-<img src="./images/inbound.png" style="width: 100%; height: auto;">
+<img src="./images/inbound.png" style="width: 100%; height: auto; margin-top:30px; margin-bottom:30px;">
 
 
 ### 4. Configure WordPress
@@ -601,7 +605,7 @@ I then accessed the WordPress site using the public IP of the web server instanc
 
 Live site: [WordPress Site](http://54.210.138.111/wordpress/)
 
-<img src="./images/wordpress.png" style="width: 100%; height: auto;">
+<img src="./images/wordpress.png" style="width: 100%; height: auto; margin-top:30px; margin-bottom:30px;">
 
 ## Conclusion
 
