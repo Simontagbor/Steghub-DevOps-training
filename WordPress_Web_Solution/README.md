@@ -446,7 +446,7 @@ MySQL is a popular open-source relational database management system that is wid
 To avoid some of the [data transfer charges](https://www.google.com/search?q=data+transfer+charges+by+cloud+providers&oq=data+transfer+charges+by+cloud+providers&aqs=chrome..69i57j33i160.21886j0j7&sourceid=chrome&ie=UTF-8) by some cloud providers when transferring data between servers in the same region, we can use the private IP of the webserver to connect to the database server in the same virtual private cloud.
 
 ##### *Every penny counts!!*
-<img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjRpenQ2ajJtZnlwaW9yNzhvYzh3bTE4MDFkbXI1ZW9jbzI2cGl0NCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/TpLfalAKqsld0b7gMS/giphy.gif" style="width:100%; margin-top:30px; margin-bottom:30px;">
+<img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjRpenQ2ajJtZnlwaW9yNzhvYzh3bTE4MDFkbXI1ZW9jbzI2cGl0NCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/TpLfalAKqsld0b7gMS/giphy.gif" style="width:1000px; margin-top:30px; margin-bottom:30px;">
 
 Assuming we have a sudden surge in traffic to our WordPress site, we will save money and probably reduce latency by making the instances share data using the local network of the virtual private cloud.
 
