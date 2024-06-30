@@ -605,6 +605,12 @@ I then accessed the WordPress site using the public IP of the web server instanc
 
 Live site: [WordPress Site](http://54.210.138.111/wordpress/)
 
+#### The homepage
+
+<img src="./images/homepage.png" style="width: 100%; height: auto; margin-top:30px; margin-bottom:30px;">
+
+#### The WordPress Admin Dashboard
+
 <img src="./images/wordpress.png" style="width: 100%; height: auto; margin-top:30px; margin-bottom:30px;">
 
 ## Conclusion
