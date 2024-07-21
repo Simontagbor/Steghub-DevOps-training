@@ -702,7 +702,6 @@ if [ "$setup_script" != "None" ]; then
 fi 
 
 ```
-
 </details>
 
 The script above automates the process of deploying the database server. It launches an EC2 instance running Ubuntu 24.04, retrieves the public IP address of the instance, and runs the setup script on the instance if provided.
@@ -737,6 +736,7 @@ GRANT ALL PRIVILEGES ON tooling.* TO 'webaccess'@'172.31.%';
 FLUSH PRIVILEGES;
 "
 ```
+</details>
 
 Our `configure-db-server.sh` script installs MySQL on the database server, creates the `tooling` database, and creates the `webaccess` user with the necessary permissions to access the database. The `webaccess` user is granted all privileges on the `tooling` database, allowing it to read from and write to the database. Additionally, the `webaccess` user is configured to allow access from the web servers' subnet.
 
@@ -903,7 +903,6 @@ done
 
 echo "Web servers configured successfully."
 ```
-
 </details>
 
 Now let's add our `nfs-client-setup.sh` script that will be run on each web server to configure the NFS client and install the necessary web server applications.
