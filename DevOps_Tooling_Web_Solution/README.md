@@ -1,4 +1,4 @@
-# Deploying a DevOps Tooling Web Application on AWS Using 3-Tier Web Architecture Powered by NFS
+# Deploying a LAMP Stack Using 3-Tier Web Architecture Powered by NFS on AWS
 
 <div style="display: flex; justify-content: center; align-items: center; margin: 20px 0;">
    <img src="./images/final-3-tierweb.drawio.png" style="width: 100%; height: auto;">
@@ -1016,7 +1016,7 @@ sudo echo "172.31.88.197:/mnt/logs /var/log/httpd nfs rw,nosuid 0 0" | sudo tee 
 ```
 You should get an output similar to this:
 
-<img src="./images/logs-exports.png" alt="logs-mount" style="width: 100%; height: auto;">
+<img src="./images/log-exports.png" alt="logs-mount" style="width: 100%; height: auto;">
 
 Great! We have successfully configured the web servers to access the shared directory on the NFS server. In the next section, we will create our PHP web application and deploy it using our web solution.
 
