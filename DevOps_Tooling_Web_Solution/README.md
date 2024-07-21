@@ -6,7 +6,7 @@
 
 ## Introduction
 
-In the Previous project, we implemented a 3-tier Web Solution focusing on leveraging the capabilities of [Network File System (NFS)](https://en.wikipedia.org/wiki/Network_File_System) to deploy a scalable and easy to manage LAMP stack on AWS.
+In the Previous project, we implemented WordPress web Application based on the LAMP web architecture. In this project we will enhance the scalability of this type of web infrastucture by explorng a 3-tier Web Solution that leverages the capabilities of [Network File System (NFS)](https://en.wikipedia.org/wiki/Network_File_System) to deploy a scalable and easy to manage LAMP stack on AWS.
 
 In this project, I will walk you through the process of deploying a website that will make access to DevOps tools within the corporate infrastructure easily accessible to the DevOps team. The DevOps tooling solution web application will rely on the 3-tier web infrastructure implementation.
 
