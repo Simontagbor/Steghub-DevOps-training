@@ -1,4 +1,4 @@
-# Deploying a LAMP Stack Using 3-Tier Web Architecture Powered by NFS on AWS
+# Deploying a LAMP Stack Application Powered by NFS on AWS.
 
 <div style="display: flex; justify-content: center; align-items: center; margin: 20px 0;">
    <img src="./images/final-3-tierweb.drawio.png" style="width: 100%; height: auto;">
