@@ -6,9 +6,9 @@
 
 ## Introduction
 
-In the Previous project, we implemented WordPress web Application based on the LAMP web architecture. In this project we will enhance the scalability of this type of web infrastucture by explorng a 3-tier Web Solution that leverages the capabilities of [Network File System (NFS)](https://en.wikipedia.org/wiki/Network_File_System) to deploy a scalable and easy to manage LAMP stack on AWS.
+In the Previous project, we implemented WordPress web Application based on the [LAMP](https://aws.amazon.com/what-is/lamp-stack/#:~:text=A%20LAMP%20stack%20is%20a,and%20the%20programming%20language%2C%20PHP.) web architecture design. In this project we will build on the previous concepts and enhance how the LAMP design handles access to server files in a way that allows for scalable and efficient deployment. We will explore a 3-tier Web Solution that leverages the capabilities of [Network File System (NFS)](https://en.wikipedia.org/wiki/Network_File_System) to achieve our enhancement goals. 
 
-In this project, I will walk you through the process of deploying a website that will make access to DevOps tools within the corporate infrastructure easily accessible to the DevOps team. The DevOps tooling solution web application will rely on the 3-tier web infrastructure implementation.
+In this project, I will walk you through the process of deploying a DevOps tooling website for a team, you can think of it as a wiki page for DevOps tools used by the development team. The DevOps tooling web application will rely on the 3-tier web infrastructure implementation.
 
 ## Pre-requisites
 
@@ -18,6 +18,9 @@ To follow along with this project, you need to have the following:
 
 - Understanding [Network File System (NFS)](https://en.wikipedia.org/wiki/Network_File_System)
 
+- Basic Understanding of [Bash Scripting](https://www.freecodecamp.org/news/bash-scripting-tutorial-linux-shell-script-and-command-line-for-beginners/#:~:text=A%20bash%20script%20is%20a,process%20using%20the%20command%20line.)
+  
+- Familiarity with basic [MYSQL commands](https://www.w3schools.com/sql/sql_syntax.asp) will be really helpful.
 
 
 ## Project Requirements
@@ -41,7 +44,7 @@ To follow along with this project, you need to have the following:
 
 #### Why Network File System (NFS)?
 
-In Web architecture, a Network File System (NFS) serves as a distributed file system protocol that allows a user on a client computer to access files over a network like how local storage is accessed. Using the NFS comes with the following benefits to the DevOps team:
+In Web architecture, a Network File System (NFS) serves as a distributed file system protocol that allows a user on a client computer to access files over a network, just like how local storage is accessed. Using the NFS comes with the following benefits to the DevOps team:
 
 - **Centralized Storage**: NFS allows for the centralization of storage, making it easier to manage files across multiple servers. This is particularly useful for web applications that are distributed across several servers, as it ensures that all servers can access the same files in real time.
 
@@ -61,17 +64,8 @@ To implement the NFS server, we will follow these steps:
 
 #### Launch an EC2 Instance
 
-I launched an EC2 instance and retrieved the `instance id` of the instance.
-We will use the `instance id` in a script to automate the configuration of the NFS server.
+I launched an EC2 instance and We will use its  `instance id` in a script to automate the configuration of the physical storage of the NFS server.
 
-```bash
-aws ec2 describe-instances --filters "Name=tag:Name,Values=<server name>" --query "Reservations[*].Instances[*].InstanceId" --output text
-```
-You should get an output similar to this
-```bash
-i-0a6cfec2d162c09ce
-```
-You can also retrieve the `instance id` from the AWS Management Console.
 
 #### Prepare and Configure Logical Volumes on NFS
 
@@ -95,11 +89,11 @@ Let's recap the manual steps we took to add Logical Volumes to the NFS server:
 
 7. Mount the Logical Volumes
 
-That's a lot of steps! and prone to time-wasting and errors. We can automate this process using a script that combines aws-cli commands and LVM commands.
+That's a lot of steps! and we'd risk wasting time and making mistakes. We can automate this process using a script that combines aws-cli commands and LVM commands.
 
 ##### Automating the Process
 
-I will three scripts that break down the process into smaller, manageable tasks:
+Let's create three scripts that break down the process into smaller, manageable tasks:
 
 1. [`create-ebs-volumes.sh`](./create-ebs-volumes.sh): This script will create and attach N number of EBS volumes to the NFS server.
 
