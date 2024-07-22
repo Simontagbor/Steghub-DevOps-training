@@ -1,12 +1,12 @@
 # Deploying a LAMP Stack Application Powered by NFS on AWS.
 
 <div style="display: flex; justify-content: center; align-items: center; margin: 20px 0;">
-   <img src="./images/final-3-tierweb.drawio.png" style="width: 100%; height: auto;">
+   <img src="./images/complete-3-tierweb.drawio.png" style="width: 100%; height: auto;">
 </div>
 
 ## Introduction
 
-In the Previous project, we implemented WordPress web Application based on the [LAMP](https://aws.amazon.com/what-is/lamp-stack/#:~:text=A%20LAMP%20stack%20is%20a,and%20the%20programming%20language%2C%20PHP.) web architecture design. In this project we will build on the previous concepts and enhance how the LAMP design handles access to server files in a way that allows for scalable and efficient deployment. We will explore a 3-tier Web Solution that leverages the capabilities of [Network File System (NFS)](https://en.wikipedia.org/wiki/Network_File_System) to achieve our enhancement goals. 
+In the Previous project, we implemented a WordPress web Application based on the [LAMP](https://aws.amazon.com/what-is/lamp-stack/#:~:text=A%20LAMP%20stack%20is%20a,and%20the%20programming%20language%2C%20PHP.) web architecture design. In this project we will build on the previous concepts and enhance how the LAMP design handles access to server files in a way that allows for scalable and efficient deployment. We will explore a 3-tier Web Solution that leverages the capabilities of [Network File System (NFS)](https://en.wikipedia.org/wiki/Network_File_System) to achieve our enhancement goals.
 
 In this project, I will walk you through the process of deploying a DevOps tooling website for a team, you can think of it as a wiki page for DevOps tools used by the development team. The DevOps tooling web application will rely on the 3-tier web infrastructure implementation.
 
@@ -1062,7 +1062,7 @@ we can now log in to the PHP application using the `admin` user and the password
 
 At this point, we have successfully deployed a 3-tier web solution on AWS. The web solution consists of three web servers serving a PHP application from a shared directory on an NFS server. The web servers are connected to a database server running MySQL to store and retrieve data for the PHP application. The web servers are configured to access the shared directory on the NFS server, and the PHP application is connected to the database server. The web application is accessible to users and can store and retrieve data from the database server.
 
-<img src="./images/final-3-tierweb.drawio.png" alt="3-tier-web" style="width: 100%; height: auto;">
+<img src="./images/complete-3-tierweb.drawio.png" alt="3-tier-web" style="width: 100%; height: auto;">
 
 ### Conclusion
 
