@@ -21,6 +21,7 @@ sudo yum install -y nfs-utils nfs4-acl-tools git mysql
 
 sudo mkdir /var/www
 sudo mount -t nfs -o rw,nosuid "$nfs_server_private_ip":/mnt/apps /var/www
+sudo mount -t nfs -o rw,nosuid "$nfs_server_private_ip":/mnt/logs /var/log/httpd/
 
 # Verify that the NFS share is mounted correctly
 
@@ -36,9 +37,9 @@ echo "Installing Apache and its dependencies.."
 sudo yum install -y httpd
 
 
-rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 
-dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
+sudo dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
 # install php
 echo "Installing php and Remi...."
 sudo dnf module reset php
@@ -57,6 +58,12 @@ sudo chmod -R 750 /etc/httpd/logs
 sudo semanage fcontext -a -t httpd_sys_rw_content_t "/var/www/html(/.*)?"
 sudo restorecon -Rv /var/www/html
 
+# clone the web application from the repository
+
+sudo git clone https://github.com/Simontagbor/tooling
+
+
+
 sudo getenforce
 sudo setenforce 0 # Permissive mode(for testing purposes only)
 
@@ -64,5 +71,6 @@ sudo systemctl start httpd
 sudo systemctl enable httpd
 
 sudo setsebool -P httpd_use_nfs 1
+sudo cp -r tooling/html/* /var/www/html/
 
 

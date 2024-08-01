@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo su
+
 # To runs this script on the NFS server instance
 # Transfer this script to the NFS server instance:
 # scp -i "your-key.pem" prepare-NFS-server.sh ec2-user@<NFS-server-public-ip>:/tmp
@@ -22,9 +22,9 @@ sudo pvcreate /dev/xvdf /dev/xvdg /dev/xvdh # add the EBS device names here
 sudo vgcreate VG_NFS /dev/xvdf /dev/xvdg /dev/xvdh # add the EBS device names here
 
 # Create Logical Volumes
-lvcreate -L 10G -n lv-opt VG_NFS
-lvcreate -L 10G -n lv-apps VG_NFS
-lvcreate -L 5G -n lv-logs VG_NFS
+sudo lvcreate -L 10G -n lv-opt VG_NFS
+sudo lvcreate -L 10G -n lv-apps VG_NFS
+sudo lvcreate -L 5G -n lv-logs VG_NFS
 
 # Format Logical Volumes with XFS
 sudo mkfs.xfs /dev/VG_NFS/lv-opt

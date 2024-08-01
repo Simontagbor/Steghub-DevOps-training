@@ -20,6 +20,9 @@ else
 
     read -p "Enter the path to the script to run on the web servers: " script_path
     script_path="${script_path}"
+
+    read -p "Enter the path to the key pair file: " key_path
+    key_path="${key_path}"
 fi
 
 # Get the private IP address of the NFS server
