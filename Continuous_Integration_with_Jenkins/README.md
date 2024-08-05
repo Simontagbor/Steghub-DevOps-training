@@ -1,4 +1,4 @@
-# How to Set Up Continous Integration For Web Infrastructure Using Jenkins
+# Setting Up Continous Integration Pipeline For a Web Infrastructure Using Jenkins
 
 <div style="display: flex; justify-content: center; align-items: center; margin: 20px 0;">
    <img src="./images/final-jenkins-3-tierweb.jpg" style="width: 100%; height: auto;">
