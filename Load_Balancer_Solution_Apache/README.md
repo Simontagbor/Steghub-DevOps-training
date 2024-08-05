@@ -1,7 +1,7 @@
-# Load Balancing Solution With Apache
+# Implementing a Load Balancing Web Solution With Apache
 
 <div style="display: flex; justify-content: center; align-items: center; margin: 20px 0;">
-   <img src="./images/complete-3-tierweb.drawio.png" style="width: 100%; height: auto;">
+   <img src="./images/3-tierweb-lb.drawio.png" style="width: 100%; height: auto;">
 </div>
 
 ## Introduction
@@ -11,7 +11,7 @@ In the [DevOps Tooling Web solution project](./DevOps_Tooling_Web_Solution/READM
 This is currently how are web infrastructure looks like:
 
 <div style="display: flex; justify-content: center; align-items: center; margin: 20px 0;">
-   <img src="./images/complete-3-tierweb.drawio.png" style="width: 100%; height: auto;">
+   <img src="../DevOps_Tooling_Web_Solution/images/complete-3-tierweb.drawio.png" style="width: 100%; height: auto;">
 
 </div>
 
