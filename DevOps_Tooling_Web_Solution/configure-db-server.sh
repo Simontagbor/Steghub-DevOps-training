@@ -20,4 +20,8 @@ CREATE USER IF NOT EXISTS 'webaccess'@'172.31.%' IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON tooling.* TO 'webaccess'@'172.31.%';
 
 FLUSH PRIVILEGES;
+
+CREATE USER 'admin'@'%' IDENTIFIED BY 'admin';
+GRANT ALL PRIVILEGES ON tooling.* TO 'admin'@'%';
+FLUSH PRIVILEGES;
 "

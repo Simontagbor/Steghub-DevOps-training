@@ -47,8 +47,8 @@ To install Apache and the `mod_proxy` module, run the following commands on the 
 
 ```bash
 sudo apt update
-sudo apt install apache2
-sudo apt-get libxml2-dev
+sudo apt install apache2 -y
+sudo apt-get install libxml2-dev
 
 # Enable the mod_proxy module
 sudo a2enmod proxy
@@ -61,7 +61,7 @@ let's enable some other modules that will be useful for our load balancer:
 
 ```bash
 
-sudo a2emond rewrite
+sudo a2enmod rewrite
 sudo a2enmod headers
 sudo a2enmod proxy_balancer
 sudo a2enmod lbmethod_bytraffic
@@ -91,7 +91,7 @@ into the `<VirtualHost>` block:
 
 <VirtualHost *:80>
     
-    <Proxy balancer://mycluster>
+    <Proxy "balancer://mycluster">
         BalancerMember http://<webserver-1-priate-ip>:80 loadfactor=5 timeout=1
         BalancerMember http://<webserver-2-priate-ip>:80 loadfactor=5 timeout=1
         BalancerMember http://<webserver-3-priate-ip>:80 loadfactor=5 timeout=1

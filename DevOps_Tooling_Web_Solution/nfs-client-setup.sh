@@ -20,8 +20,9 @@ sudo yum install -y nfs-utils nfs4-acl-tools git mysql
 # Mount the NFS share
 
 sudo mkdir /var/www
-sudo mount -t nfs -o rw,nosuid "$nfs_server_private_ip":/mnt/apps /var/www
-sudo mount -t nfs -o rw,nosuid "$nfs_server_private_ip":/mnt/logs /var/log/httpd/
+
+sudo mount -t nfs -o rw,nosuid $nfs_server_private_ip:/mnt/apps /var/www
+sudo mount -t nfs -o rw,nosuid $nfs_server_private_ip:/mnt/logs /var/log/httpd/
 
 # Verify that the NFS share is mounted correctly
 
@@ -53,7 +54,10 @@ sudo systemctl enable php-fpm
 
 # Start Apache service
 sudo chown -R apache:apache /etc/httpd/logs
+sudo chown -R apache:apache /var/www/
+
 sudo chmod -R 750 /etc/httpd/logs
+sudo chmod -R 750 /var/www/
 # Set SELinux context for Apache web root securely
 sudo semanage fcontext -a -t httpd_sys_rw_content_t "/var/www/html(/.*)?"
 sudo restorecon -Rv /var/www/html
