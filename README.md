@@ -19,4 +19,5 @@ This repository documents project-based learning tasks for the Steghub DevOps En
 8. [DevOps_Tooling_Web_Solution](./DevOps_Tooling_Web_Solution/README.md)
 
 9. [Load_Balancer_Solution_Apache](./Load_Balancer_Solution_Apache/README.md)
-
+   
+10. [Continuous Integration With Jenkins](./Continuous_Integration_with_Jenkins/README.md) 
