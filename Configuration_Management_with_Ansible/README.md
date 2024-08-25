@@ -297,7 +297,7 @@ This is how our CI/CD looks like now:
 
 This is how our entire 3-tier Web Infrastructure look like
 
-<img src="./images/3-tier-ansible.png" style="width: 100%; height: auto;">
+<img src="./images/3-tierweb-ansible.drawio.png" style="width: 100%; height: auto;">
 
 ### Conclusion
 
