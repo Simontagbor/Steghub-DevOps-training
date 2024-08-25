@@ -125,14 +125,14 @@ touch playbooks/common.yml
 Let's also create a series of inventory files for our web servers. We will create an inventory file for each environment (development, staging, testing and production). In the Visual Studio Code terminal, run the following commands:
 
 ```bash
-touch inventory/dev
-touch inventory/staging
-touch inventory/uat
-touch inventory/prod
+touch inventory/dev.yml
+touch inventory/staging.yml
+touch inventory/uat.yml
+touch inventory/prod.yml
 ```
-An inventory file is a simple text file that contains a list of hosts and groups of hosts that Ansible can connect to. The inventory file is used to define the hosts that Ansible will manage and the groups of hosts that Ansible will manage.
+An inventory file is a simple YAML file that contains a list of hosts and groups of hosts that Ansible can connect to. The inventory file is used to define the hosts that Ansible will manage and the groups of hosts that Ansible will manage.
 
-before we start organizing our inventory of hosts i.e  target servers we want to configure and manage and our playbook of tasks, let's first underdand how ansible allows us to implement the concept of [infrastructure as code](https://en.wikipedia.org/wiki/Infrastructure_as_code).
+before we start organizing our inventory of target servers we want to manage and our playbook of tasks, let's first underdand how ansible allows us to implement the concept of [infrastructure as code](https://en.wikipedia.org/wiki/Infrastructure_as_code).
 
 In a fast-paced environment, it is important to be able to quickly and easily deploy and manage infrastructure. Infrastructure as code is a practice that allows you to define your infrastructure in code and then use that code to deploy and manage your infrastructure. This allows you to treat your infrastructure as you would treat your application code, with version control, testing, and automation. 
 
@@ -292,8 +292,12 @@ At this point our project is complete. We have successfully used Ansible to auto
 This is how our CI/CD looks like now:
 
 <div style="display: flex; justify-content: center; align-items: center; margin: 20px 0;">
-   <img src="/.images/ansible-cropped.png" style="width: 100%; height: auto;">
+   <img src="./images/ansible-cropped.png" style="width: 100%; height: auto;">
 </div>
+
+This is how our entire 3-tier Web Infrastructure look like
+
+<img src="./images/3-tier-ansible.png" style="width: 100%; height: auto;">
 
 ### Conclusion
 
