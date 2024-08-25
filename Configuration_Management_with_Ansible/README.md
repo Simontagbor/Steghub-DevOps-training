@@ -4,7 +4,9 @@
    <img src="./images/ansible.png" style="width: 100%; height: auto;">
 </div>
 
-If you have been following along with my [projects](../README.md), you would notice that we have for the most part been manually configuring our servers. We tried in some cases to automate the process using bash scripts. However, as we scale our infrastructure, it becomes increasingly difficult to manage the configuration of multiple servers manually. Writing bash scripts does help to some extent but, it is often error-prone and difficult to maintain as the infrastructure evolves. This is where configuration management tools come in.
+If you have been following along with my [projects](../README.md), you would notice that we have for the most part been manually configuring our servers. We tried in some cases to automate the process using bash scripts. However, as we scale our infrastructure, it becomes increasingly difficult to manage the configuration of multiple servers manually. 
+
+Writing bash scripts does help to some extent but, it is often error-prone and difficult to maintain as the infrastructure evolves. This is where configuration management tools come in.
 
 Configuration management tools are designed to automate the process of configuring and managing servers. They allow us to define the desired state of our infrastructure in code and then apply that code to your servers to ensure they are configured correctly. One such tool is [Ansible](https://www.ansible.com/). In this project, we will explore how to use Ansible to automate the configuration of a simple web architecture.
 
