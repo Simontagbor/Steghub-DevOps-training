@@ -43,7 +43,7 @@ The command above will give all users read, write and execute permissions on the
 
 In the jenkins dashboard, we need to navigate to Manage Jenkins > Manage Plugins > Available. Search for the `copy artifact` plugin and install it.
 
-<img src="images/copy_artifact_plugin.png" alt="image showing copy artifact installation" width="800" height="400">
+<img src="images/copy_artifact_plugin.png" alt="image showing copy artifact installation" width="100%">
 
 Once the plugin is installed, we can proceed to create a new jenkins freestyle project. We will name it `save-artifacts`. The job will copy the artifacts from the ansible-config-mgt job to the ansible-artifact directory. As a result, it needs to be configured to be triggered only after the `ansible-config-mgt` job completes successfully.
 
@@ -54,18 +54,18 @@ In the jenkins dashboard, navigate to New Item > Freestyle project. Name the pro
 
 To save space, we need to configure our `save-artifacts` job to keep only the last two(2). To do that we need to navigate to the `Discard Old Builds` section and check the `Discard Old Builds` checkbox. In the `Max # of builds to keep` field, enter `2`.
 
-<img src="images/discard_old_builds.png" alt="image showing discard old builds" width="800" height="400">
+<img src="images/discard_old_builds.png" alt="image showing discard old builds" width="100%">
 
 ##### Our build trigger
 
-<img src="images/build-trigger.png" alt="build" width="800" height="400">
+<img src="images/build-trigger.png" alt="build" width="100%">
 
 ##### Our Build Step
 
-<img src="images/build-step.png" alt="image showing build step" width="800" height="400">
+<img src="images/build-step.png" alt="image showing build step" width="100%">
 
 ##### Successfull build
-<img src="images/save_artifacts.png" alt="image showing susscesfull build" width="800" height="400">
+<img src="images/save_artifacts.png" alt="image showing susscesfull build" width="100%">
 
 Just like that we have added another jenkins job that will copy the artifacts from the ansible-conqfig-mgt job to the ansible-artifact directory. We now have a clean ansible setup on our jenkins server. the next step is to do the actual refactoring of the playbooks.
 
@@ -197,7 +197,7 @@ To set up configuration management for the UAT Servers, we could write tasks spe
 
 Before we write the playbook we need to provsion two new RHEL 8 EC2 instances on AWS. Head over to [AWS](https://aws.amazon.com/) and create two new EC2 instances.
 
-<img src="images/new-uat-servers.png" alt="image showing new uat servers" width="800" height="400">
+<img src="images/new-uat-servers.png" alt="image showing new uat servers" width="100%">
 
 Let's also update the inventory file names `uat.yml` to include the new UAT servers. navigate to the `inventory` directory and update the `uat.yml` file to include the new UAT servers like so
 
