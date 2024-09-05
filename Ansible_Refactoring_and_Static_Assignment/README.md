@@ -1,8 +1,10 @@
 # Ansible Refactoring and Static Assignment
 
+<img src="images/Ansible-image.png" width="100%">
+
 If you have been following the previous projects, you would have noticed that at some point our 3 tier web architecture became a bit complex to manage. We had a total of 7 AWS EC2 instances, 3 of which were web servers, one database server, one load balancer and an NFS server. It became  necessary to introduce an Ansible jenkins job to automate the configuration management for the servers running our web application.
 
-We created basic [playbooks](https://) to automate the configuration of the development servers specified in an ansible [inventory file](https://)
+We created basic [playbooks](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_intro.html) to automate the configuration of the development servers specified in an ansible [inventory file](https://www.juniper.net/documentation/us/en/software/junos-ansible/ansible/topics/concept/junos-ansible-inventory-file-overview.html#:~:text=The%20Ansible%20inventory%20file%20defines,formats%20include%20INI%20and%20YAML.)
 However, the playbooks were not well structured and were not reusable. If for instance we wanted set up a new server, with a similar configuration but with a few differences, we would have to create a new playbook from scratch. This is not the best practice in configuration management. 
 
 Another issue is related to the static assignment of variables in the playbooks. We had to hard code the IP addresses of the servers in the playbooks. This is not a good practice because the IP addresses of the servers could change at any time. It is better to use a dynamic inventory file to manage the servers.
@@ -67,9 +69,9 @@ To save space, we need to configure our `save-artifacts` job to keep only the la
 ##### Successfull build
 <img src="images/save_artifacts.png" alt="image showing susscesfull build" width="100%">
 
-Just like that we have added another jenkins job that will copy the artifacts from the ansible-conqfig-mgt job to the ansible-artifact directory. We now have a clean ansible setup on our jenkins server. the next step is to do the actual refactoring of the playbooks.
+Just like that we have added another jenkins job that will copy the artifacts from the ansible-conqfig-mgt job to the ansible-artifact directory. We now have a clean ansible setup on our jenkins server. The next step is to do the actual refactoring of the playbooks.
 
-lets's get to it!!
+<img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZmMxNXY1dWdsdHpzamhhMmE3dGF6b2luNmx4MncybzdxZjlsb2kzdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oFzmsNln8IYz0UtMc/giphy.gif" width="100%">
 
 ### Refactor the playbooks
 As a  best practice let's create a `refactor` branch on which we will do all the refactoring tasks.
@@ -78,10 +80,11 @@ doing this will help us keep the `master` branch clean and free from any errors 
 ```bash
 git checkout -b refactor
 ```
+
 #### Why Refactor?
 
-currently our [`common.yml`](../../../ansible-config-mgt/playbooks/common.yml) play book  attempts to configure all the servers the same way. This is fine for caases where all the servers have the same configuration. However, in a real-world scenario, we may have servers with different configurations. For instance, we may have a web server that requires a different configuration from the database server. In such a case, we would have to create a new playbook from scratch. This is not the best practice in configuration management.
-we need to break configuration tasks into different playbooks to make them more modular and reusable. 
+currently our `common.yml` play book  attempts to configure all the servers the same way. This is fine for caases where all the servers have the same configuration. However, in a real-world scenario, we may have servers with different configurations. For instance, we may have a web server that requires a different configuration from the database server. In such a case, we would have to create a new playbook from scratch. This is not the best practice in configuration management.
+we need to break configuration tasks into different playbooks to make them more modular and reusable.
 
 ##### Create Parent Playbook
 
@@ -106,7 +109,6 @@ Now we will import the `common.yml` playbook into the `site.yml` playbook.
 In the `site.yml` playbook, we will import the `common.yml` playbook using the `import_playbook` module. The `import_playbook` module will import the `common.yml` playbook into the `site.yml` playbook. The `site.yml` playbook will be the main playbook that will be executed by the ansible-playbook command.
 
 ```yaml
-
 ---
 - hosts: all
 
@@ -191,6 +193,7 @@ The command above will list all the installed packages on the web server. If the
 You can repeat the same process for the other servers. If the `wireshark` package has been removed from all the servers, the refactoring process is successful.
 We now have clean and reusable configuration management playbooks for our development servers. Let's also set up another configuration management for User Aceptance Testing (UAT) servers.
 
+
 #### Add Role-based Playbooks
 
 To set up configuration management for the UAT Servers, we could write tasks specific to uat servers in the `common.yml` playbook. However, this is not the best practice in configuration management. We need to break configuration tasks into different playbooks to make them more modular and reusable. We will use [roles](https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html) to achieve this.
@@ -251,7 +254,7 @@ sudo ansible-galaxy init webservers
 ```
 This creates a `webservers` role in the `roles` directory. The `webservers` role contains the following directories:
 
-<img src="images/webserver-roles.png" alt="image showing output of running ansible-galaxy" width="800" height="400">
+<img src="images/webserver-roles.png" alt="image showing output of running ansible-galaxy" width="100%">
 
 currently we have some directories that we do not need. For this project I only need the `defaults`,`handlers`, `meta`, `tasks` and `templates` directories. I will delete the other directories.
 
@@ -263,7 +266,7 @@ sudo rm -rf /home/ubuntu/ansible-config-mgt/roles/webserver/tests
 
 Now our `webserver` role is structured as follows:
 
-<img src="images/webserver-role.png" alt="image showing webserver role structure" width="800" height="400">
+<img src="images/webserver-role.png" alt="image showing webserver role structure" width="100%">
 
 ##### Add path to the roles directory in the ansible.cfg file
 
@@ -320,6 +323,7 @@ in our `roles/webserver/tasks/main.yml` file we will have the following tasks:
     state: absent
 
 ``` 
+<img src="https://media.giphy.com/media/1M1XZmTwhYxAAKgKQx/giphy.gif?cid=790b7611g4ttxta2fffzk4a60jyo2se95kjmghebtpp3cp20&ep=v1_gifs_search&rid=giphy.gif&ct=g" width="100%">
 
 Great! we have our webserver role set up complete with tasks needed to configure our two UAT servers. Next up we will reference the webserver role in a static assignment file.
 
@@ -368,7 +372,7 @@ We need to test our code changes and then commit the changes and create a pull r
 
 To test the refactored codebase, we will run the `site.yml` playbook. The `site.yml` playbook will call the `common.yml` playbook and the `webserver` role. The `common.yml` playbook will configure the development servers, while the `webserver` role will configure the UAT servers.
 
-<!-- insert fingers crossed gif from giphy-->
+<img src="https://media.giphy.com/media/fGL80gGa1scfCXfzoo/giphy.gif?cid=790b76119n4z7bn5pqzxcxcb31fijvxkxemjtte8tbb6xn7s&ep=v1_gifs_search&rid=giphy.gif&ct=g" width="100%">
 
 On our jenkins server, we will run the `site.yml` playbook using the `ansible-playbook` command. navigate to the `ansible-config-mgt` directory and run the following command:
 
@@ -388,6 +392,10 @@ We can also navigate to the index page of the site using the url  http://<uat-we
 <img src="images/login-page.png" alt="image showing login page" width="100%">
 
 This is great! our refactoring worked it's time to create a pull request to share the update with the team.
+
+<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdmJ3MnlzcWhjbDloYnF4bGVuOTc1MWxpaDRvc2gybXRrYTB0eXk1ZyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/q4QfjGnFKryzjosj1g/giphy.gif" width="100%">
+
+yaay! it works...
 
 let's reflect on what we've accomplished so far: 
 
@@ -425,15 +433,8 @@ This is how our CI/CD pipeline looks like currently after refactoring our ansibl
 
 <img src="images/cicdpipeline.png" width="100%">
 
-Our entire Infrastructure should look like this:
+Our entire Infrastructure should now look like this:
 
 <img src="images/3-tierweb.jpg" width="100%">
 
-This is the end of the project. I hope you enjoyed it as much as I did. I look forward to seeing you in the next project.
-
-
-
-
-
-
-
+This is the end of the project. I hope you enjoyed it as much as I did. I look forward to seeing you in the next project where we will explore dynamic asignments with ansible.
