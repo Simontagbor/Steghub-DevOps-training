@@ -1,4 +1,4 @@
-# Ansible Refactoring and Static Assignment
+# Refactoring Existing Ansible Configuration Management Codebase With Static Assignment
 
 <img src="images/Ansible-image.png" width="100%">
 
@@ -323,9 +323,10 @@ in our `roles/webserver/tasks/main.yml` file we will have the following tasks:
     state: absent
 
 ``` 
-<img src="https://media.giphy.com/media/1M1XZmTwhYxAAKgKQx/giphy.gif?cid=790b7611g4ttxta2fffzk4a60jyo2se95kjmghebtpp3cp20&ep=v1_gifs_search&rid=giphy.gif&ct=g" width="100%">
 
-Great! we have our webserver role set up complete with tasks needed to configure our two UAT servers. Next up we will reference the webserver role in a static assignment file.
+Great! we have our webserver role set up, complete with tasks needed to configure our two UAT servers. Next up we will reference the webserver role in a static assignment file.
+
+<img src="https://media.giphy.com/media/1M1XZmTwhYxAAKgKQx/giphy.gif?cid=790b7611g4ttxta2fffzk4a60jyo2se95kjmghebtpp3cp20&ep=v1_gifs_search&rid=giphy.gif&ct=g" width="100%">
 
 ##### Reference the Role in a Static Assignment File
 
