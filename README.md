@@ -25,3 +25,5 @@ This repository documents project-based learning tasks for the Steghub DevOps En
 12. [Load Balacer Solution With NGINX and SSl](./Load_Balancer_Solution_Nginx_SSl/README.md)
 
 13. [Configuration Management with Ansible](./Configuration_Management_with_Ansible/README.md)
+
+14. [Ansible Refacoring and Static Asignments](./Ansible_Refactoring_and_Static_Assignment/README.md)
