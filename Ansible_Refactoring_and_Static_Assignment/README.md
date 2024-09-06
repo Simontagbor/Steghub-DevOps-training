@@ -7,9 +7,8 @@ If you have been following the previous projects, you would have noticed that at
 We created basic [playbooks](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_intro.html) to automate the configuration of the development servers specified in an ansible [inventory file](https://www.juniper.net/documentation/us/en/software/junos-ansible/ansible/topics/concept/junos-ansible-inventory-file-overview.html#:~:text=The%20Ansible%20inventory%20file%20defines,formats%20include%20INI%20and%20YAML.)
 However, the playbooks were not well structured and were not reusable. If for instance we wanted set up a new server, with a similar configuration but with a few differences, we would have to create a new playbook from scratch. This is not the best practice in configuration management. 
 
-Another issue is related to the static assignment of variables in the playbooks. We had to hard code the IP addresses of the servers in the playbooks. This is not a good practice because the IP addresses of the servers could change at any time. It is better to use a dynamic inventory file to manage the servers.
+In this project we will be restructuring the codebase for managing the configuration of our web infrastructure.
 
-In this project, we will refactor the playbooks to make them more modular and reusable. We will also use a dynamic inventory file to manage the servers.
 
 ## Pre-requisites
 
