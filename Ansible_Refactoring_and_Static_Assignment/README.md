@@ -387,7 +387,7 @@ You should see a terminal output like this:
 
 <img src="images/ansible-playbook-output.png" alt="terminal output for running ansible command" width="100%">
 
-We can also navigate to the index page of the site using the url  http://<uat-webserver-IP>/index.php this should redirect you to the login page below.
+We can also navigate to the index page of the site using the url  `http://uat-webserver-IP/index.php` this should redirect you to the login page below.
 
 <img src="images/login-page.png" alt="image showing login page" width="100%">
 
@@ -411,7 +411,7 @@ let's reflect on what we've accomplished so far:
 
 - [x] We tested the refactored codebase by running the site.yml playbook.
 
-Now that we have tnested our code changes, we can commit the changes and create a pull request for our teamates to review before merging into the master branch.
+Now that we have tested our code changes, we can commit the changes and create a pull request for our teamates to review before merging into the master branch.
 
 ```bash
 git add ansible-config-mgt/playbooks ansible-config-mgt/static-assignments ansible-config-mgt/roles ansible-config-mgt/inventory
