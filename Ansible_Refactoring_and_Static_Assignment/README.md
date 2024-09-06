@@ -42,7 +42,7 @@ The command above will give all users read, write and execute permissions on the
 
 #### Install the copy artifact plugin
 
-In the jenkins dashboard, we need to navigate to Manage Jenkins > Manage Plugins > Available. Search for the `copy artifact` plugin and install it.
+In the jenkins dashboard, we need to navigate to `Manage Jenkins` > `Manage Plugins` > `Available`. Search for the `copy artifact` plugin and install it.
 
 <img src="images/copy_artifact_plugin.png" alt="image showing copy artifact installation" width="100%">
 
@@ -50,7 +50,7 @@ Once the plugin is installed, we can proceed to create a new jenkins freestyle p
 
 #### Create a new Jenkins job
 
-In the jenkins dashboard, navigate to New Item > Freestyle project. Name the project `save-artifacts`. In the configuration page, navigate to the `Build` section and click on `Add build step`. Select `Copy artifacts from another project`. In the `Project name` field, enter `ansible`. In the `Which build` field, select `Latest successful build`. In the `Artifacts to copy` field, enter `**` to copy everything. In the `Target directory` field, enter `/home/ubuntu/ansible-config-artifact`. 
+In the jenkins dashboard, navigate to `New Item` > `Freestyle project`. Name the project `save-artifacts`. In the configuration page, navigate to the `Build` section and click on `Add build step`. Select `Copy artifacts from another project`. In the `Project name` field, enter `ansible`. In the `Which build` field, select `Latest successful build`. In the `Artifacts to copy` field, enter `**` to copy everything. In the `Target directory` field, enter `/home/ubuntu/ansible-config-artifact`. 
 
 
 To save space, we need to configure our `save-artifacts` job to keep only the last two(2). To do that we need to navigate to the `Discard Old Builds` section and check the `Discard Old Builds` checkbox. In the `Max # of builds to keep` field, enter `2`.
