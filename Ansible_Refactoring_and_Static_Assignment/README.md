@@ -1,4 +1,4 @@
-# Ansible Refactoring and Static Assignment
+# Refactoring Existing Ansible Configuration Management Codebase With Static Assignment
 
 <img src="images/Ansible-image.png" width="100%">
 
@@ -7,9 +7,8 @@ If you have been following the previous projects, you would have noticed that at
 We created basic [playbooks](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_intro.html) to automate the configuration of the development servers specified in an ansible [inventory file](https://www.juniper.net/documentation/us/en/software/junos-ansible/ansible/topics/concept/junos-ansible-inventory-file-overview.html#:~:text=The%20Ansible%20inventory%20file%20defines,formats%20include%20INI%20and%20YAML.)
 However, the playbooks were not well structured and were not reusable. If for instance we wanted set up a new server, with a similar configuration but with a few differences, we would have to create a new playbook from scratch. This is not the best practice in configuration management. 
 
-Another issue is related to the static assignment of variables in the playbooks. We had to hard code the IP addresses of the servers in the playbooks. This is not a good practice because the IP addresses of the servers could change at any time. It is better to use a dynamic inventory file to manage the servers.
+In this project we will be restructuring the codebase for managing the configuration of our web infrastructure.
 
-In this project, we will refactor the playbooks to make them more modular and reusable. We will also use a dynamic inventory file to manage the servers.
 
 ## Pre-requisites
 
@@ -43,7 +42,7 @@ The command above will give all users read, write and execute permissions on the
 
 #### Install the copy artifact plugin
 
-In the jenkins dashboard, we need to navigate to Manage Jenkins > Manage Plugins > Available. Search for the `copy artifact` plugin and install it.
+In the jenkins dashboard, we need to navigate to `Manage Jenkins` > `Manage Plugins` > `Available`. Search for the `copy artifact` plugin and install it.
 
 <img src="images/copy_artifact_plugin.png" alt="image showing copy artifact installation" width="100%">
 
@@ -51,7 +50,7 @@ Once the plugin is installed, we can proceed to create a new jenkins freestyle p
 
 #### Create a new Jenkins job
 
-In the jenkins dashboard, navigate to New Item > Freestyle project. Name the project `save-artifacts`. In the configuration page, navigate to the `Build` section and click on `Add build step`. Select `Copy artifacts from another project`. In the `Project name` field, enter `ansible`. In the `Which build` field, select `Latest successful build`. In the `Artifacts to copy` field, enter `**` to copy everything. In the `Target directory` field, enter `/home/ubuntu/ansible-config-artifact`. 
+In the jenkins dashboard, navigate to `New Item` > `Freestyle project`. Name the project `save-artifacts`. In the configuration page, navigate to the `Build` section and click on `Add build step`. Select `Copy artifacts from another project`. In the `Project name` field, enter `ansible`. In the `Which build` field, select `Latest successful build`. In the `Artifacts to copy` field, enter `**` to copy everything. In the `Target directory` field, enter `/home/ubuntu/ansible-config-artifact`. 
 
 
 To save space, we need to configure our `save-artifacts` job to keep only the last two(2). To do that we need to navigate to the `Discard Old Builds` section and check the `Discard Old Builds` checkbox. In the `Max # of builds to keep` field, enter `2`.
@@ -323,9 +322,10 @@ in our `roles/webserver/tasks/main.yml` file we will have the following tasks:
     state: absent
 
 ``` 
-<img src="https://media.giphy.com/media/1M1XZmTwhYxAAKgKQx/giphy.gif?cid=790b7611g4ttxta2fffzk4a60jyo2se95kjmghebtpp3cp20&ep=v1_gifs_search&rid=giphy.gif&ct=g" width="100%">
 
-Great! we have our webserver role set up complete with tasks needed to configure our two UAT servers. Next up we will reference the webserver role in a static assignment file.
+Great! we have our webserver role set up, complete with tasks needed to configure our two UAT servers. Next up we will reference the webserver role in a static assignment file.
+
+<img src="https://media.giphy.com/media/1M1XZmTwhYxAAKgKQx/giphy.gif?cid=790b7611g4ttxta2fffzk4a60jyo2se95kjmghebtpp3cp20&ep=v1_gifs_search&rid=giphy.gif&ct=g" width="100%">
 
 ##### Reference the Role in a Static Assignment File
 
@@ -387,7 +387,7 @@ You should see a terminal output like this:
 
 <img src="images/ansible-playbook-output.png" alt="terminal output for running ansible command" width="100%">
 
-We can also navigate to the index page of the site using the url  http://<uat-webserver-IP>/index.php this should redirect you to the login page below.
+We can also navigate to the index page of the site using the url  `http://uat-webserver-IP/index.php` this should redirect you to the login page below.
 
 <img src="images/login-page.png" alt="image showing login page" width="100%">
 
@@ -411,7 +411,7 @@ let's reflect on what we've accomplished so far:
 
 - [x] We tested the refactored codebase by running the site.yml playbook.
 
-Now that we have tnested our code changes, we can commit the changes and create a pull request for our teamates to review before merging into the master branch.
+Now that we have tested our code changes, we can commit the changes and create a pull request for our teamates to review before merging into the master branch.
 
 ```bash
 git add ansible-config-mgt/playbooks ansible-config-mgt/static-assignments ansible-config-mgt/roles ansible-config-mgt/inventory
