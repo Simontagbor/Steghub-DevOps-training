@@ -27,3 +27,5 @@ This repository documents project-based learning tasks for the Steghub DevOps En
 13. [Configuration Management with Ansible](./Configuration_Management_with_Ansible/README.md)
 
 14. [Ansible Refacoring and Static Asignments](./Ansible_Refactoring_and_Static_Assignment/README.md)
+
+15. [Ansible Dynamic Assignments With Community Roles](./Ansible_Dynamic_Assignments/README.md)
